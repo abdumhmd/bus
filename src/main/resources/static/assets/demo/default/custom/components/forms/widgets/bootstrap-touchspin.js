@@ -33,9 +33,11 @@ var BootstrapTouchspin = function() {
             buttondown_class: 'btn btn-secondary',
             buttonup_class: 'btn btn-secondary',
 
-            min: -1000000000,
+            min: -0,
             max: 1000000000,
-            stepinterval: 50,
+            stepinterval: 100,
+            step:5,
+            decimals:2,
             maxboostedstep: 10000000,
             postfix: '$'
         });

@@ -4,14 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class UserController {
-@RequestMapping("/user")
-public String user(){
-    return "user/list";
-}
-@RequestMapping("user/new")
-public String list()
+public class TicketController {
+@RequestMapping("/ticket/new")
+    public String ticket()
 {
-    return "user/users";
+    return "ticket/ticket";
 }
 }
