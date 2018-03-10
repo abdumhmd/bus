@@ -39,7 +39,7 @@ var BootstrapTouchspin = function() {
             step:5,
             decimals:2,
             maxboostedstep: 10000000,
-            postfix: '$'
+            postfix: 'Birr'
         });
 
         // vertical buttons with custom icons:

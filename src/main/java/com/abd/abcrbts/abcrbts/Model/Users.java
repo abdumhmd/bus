@@ -33,6 +33,24 @@ public class Users {
 	@Column(name="username")
 	private String username;
 
+	public Users(Users users) {
+
+
+	this.firstName = users.getFirstName();
+        this.lastName = users.getLastName();
+        this.phone = users.getPhone();
+
+        this.username = users.getUsername();
+        this.password = users.getPassword();
+        this.attempt = users.getAttempt();
+        this.isActive = users.isActive();
+        this.isLocked = users.isLocked();
+        this.isExpired = users.isExpired();
+        this.roles = users.getRoles();}
+
+	public Users() {
+	}
+
 	public int getAttempt() {
 		return attempt;
 	}
