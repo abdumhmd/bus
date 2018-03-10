@@ -30465,7 +30465,7 @@ body.m-content--skin-light2 {
     background-color: #ffffff; }
 
 .m-aside-left.m-aside-left-offcanvas-default .m-aside-left {
-  top: !important; }
+  top:0 !important; }
 
 .m-aside-left.m-aside-left-offcanvas-default .m-body {
   padding-left: 0 !important; }
