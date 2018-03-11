@@ -3,6 +3,19 @@ var SweetAlert2Demo = function() {
 
     //== Demos
     var initDemos = function() {
+        $('#credentials').load(function (e) {
+           swal({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success",
+                confirmButtonText: "Confirm me!",
+                confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
+                timer: 5000,
+                onOpen: function() {
+                    swal.showLoading()
+                }
+            });
+        });
         //== Sweetalert Demo 1
         $('#m_sweetalert_demo_1').click(function(e) {
             swal('Good job!');

@@ -53,14 +53,14 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<!--begin::Form-->
-											<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+											<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" method="POST" th:action="@{/user/new}" th:object="${users}">
 												<div class="m-portlet__body">
 													<div class="form-group m-form__group row">
 														<div class="col-lg-6">
 															<label>
 																First Name:
 															</label>
-															<input type="email" class="form-control m-input" placeholder="First name...."/>
+															<input type="text" class="form-control m-input" name="firstName" placeholder="First name...."/>
 															<span class="m-form__help">
 														Please enter your First name
 													</span>
@@ -69,7 +69,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															<label class="">
 																Last Name:
 															</label>
-															<input type="email" class="form-control m-input" placeholder="Last name...."/>
+															<input type="text" class="form-control m-input" name="lastName" placeholder="Last name...."/>
 															<span class="m-form__help">
 														Please enter your Last name
 													</span>
@@ -81,7 +81,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																Phone number:
 															</label>
 															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input" placeholder="Phone number"/>
+																<input type="tel" class="form-control m-input" name="phone" placeholder="Phone number"/>
 																<span class="m-input-icon__icon m-input-icon__icon--right">
 															<span>
 																<i class="la la-phone"></i>
@@ -96,22 +96,8 @@ License: You must have a valid license purchased only from themeforest(the above
 															<label class="">
 																Role:
 															</label>
-                                                            <select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1">
-                                                                <option>
-                                                                    1
-                                                                </option>
-                                                                <option>
-                                                                    2
-                                                                </option>
-                                                                <option>
-                                                                    3
-                                                                </option>
-                                                                <option>
-                                                                    4
-                                                                </option>
-                                                                <option>
-                                                                    5
-                                                                </option>
+                                                            <select class="form-control m-input m-input--air m-input--pill"  name="role" id="exampleSelect1">
+																<option th:each="operator : ${roles}" th:value="${operator.role_id}" th:inline="text">[[${operator.role}]]</option>
                                                             </select>
 															<span class="m-form__help">
 														Please select Role
@@ -127,7 +113,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													<div class="m-form__actions m-form__actions--solid">
 														<div class="row">
 															<div class="col-lg-6">
-																<button type="reset" class="btn btn-primary">
+																<button type="submit" class="btn btn-primary">
 																	Save
 																</button>
 																<button type="reset" class="btn btn-secondary">
