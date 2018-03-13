@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<Users,Integer> {
     @Transactional
     void addUserRole(int user, int role);
 
+
+
 }

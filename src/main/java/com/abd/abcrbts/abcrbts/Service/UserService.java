@@ -15,4 +15,5 @@ public interface UserService {
     public void addRole(int users,int role);
     public String changePassword(String newPassword, String oldPassword);
     public void delete(int id);
+
 }

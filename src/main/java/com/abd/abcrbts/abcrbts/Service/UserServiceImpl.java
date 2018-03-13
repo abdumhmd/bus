@@ -93,4 +93,6 @@ public class UserServiceImpl implements UserDetailsService,UserService {
     public void delete(int id) {
         userRepository.delete(id);
     }
+
+
 }
