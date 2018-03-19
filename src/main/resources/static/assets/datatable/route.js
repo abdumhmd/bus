@@ -17,7 +17,7 @@ var DatatableRemoteAjaxDemo = function() {
                         // sample GET method
                         method: 'GET',
                         //url: 'https://keenthemes.com/metronic/preview/inc/api/datatables/demos/default.php',
-                        url: '../users/table',
+                        url: '../routes/table',
                         map: function(raw) {
                             // sample data mapping
 
@@ -69,37 +69,35 @@ var DatatableRemoteAjaxDemo = function() {
                     selector: false,
                     textAlign: 'center',
                 }, {
-                    field: 'firstName',
-                    title: 'First Name',
+                    field: 'departure',
+                    title: 'Route',
                     // sortable: 'asc', // default sort
                     filterable: true, // disable or enable filtering
                     width: 150,
-                    // basic templating support for column rendering,
+                    template: function(row) {
+                        // callback function support for column rendering
+
+                        return row.departure+" - "+row.destination;},
 
                 }, {
-                    field: 'lastName',
-                    title: 'Last Name',
+                    field: 'price',
+                    title: 'Price',
                     width: 150,
                     filterable: true,
                 }, {
-                    field: 'username',
-                    title: 'User Name',
+                    field: 'time',
+                    title: 'Departure Time',
                     filterable: true,
                 }, {
-                    field: 'phone',
-                    title: 'Phone Number',
-                    width: 200,
-                    filterable: true,
-                }, {
-                    field: 'roles',
-                    title: 'Role',
+                    field: 'bus',
+                    title: 'Bus',
                     filterable: true,
                     template: function(row) {
                         // callback function support for column rendering
 
-                        return row.roles[0].role;},
+                        return row.bus.plate;},
                 },
-               {
+                {
                     field: 'Actions',
                     width: 110,
                     title: 'Actions',
@@ -118,7 +116,7 @@ var DatatableRemoteAjaxDemo = function() {
 						<div class="modal-content">\
 						<div class="modal-header">\
 						<h5 class="modal-title" id="exampleModalLabel">\n' +
-                           'Confirm <i class="la la-question-circle"></i>\n' +
+                            'Confirm <i class="la la-question-circle"></i>\n' +
                             '</h5>\
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>\
                                                     <div class="modal-body">\
@@ -126,7 +124,7 @@ var DatatableRemoteAjaxDemo = function() {
                                                     </div>\
                                                     <div class="modal-footer">\
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>\
-                                                    <a href="/user/delete/' + row.id + '" class="btn btn-danger" role="button">Delete</a></div>\
+                                                    <a href="/routes/delete/' + row.id + '" class="btn btn-danger" role="button">Delete</a></div>\
 						</div>\
 						</div>\
 						</div>\
@@ -137,15 +135,7 @@ var DatatableRemoteAjaxDemo = function() {
 
         var query = datatable.getDataSourceQuery();
 
-        $('#m_form_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Status');
-        });
 
-        $('#m_form_type').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'User Name');
-        });
-
-        $('#m_form_status, #m_form_type').selectpicker();
 
     };
 

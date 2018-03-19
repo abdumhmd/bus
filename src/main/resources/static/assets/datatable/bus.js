@@ -17,7 +17,7 @@ var DatatableRemoteAjaxDemo = function() {
                         // sample GET method
                         method: 'GET',
                         //url: 'https://keenthemes.com/metronic/preview/inc/api/datatables/demos/default.php',
-                        url: '../users/table',
+                        url: '../bus/table',
                         map: function(raw) {
                             // sample data mapping
 
@@ -31,6 +31,8 @@ var DatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 sortable: true,
+                serverFiltering: true,
+                serverSorting: true,
             },
 
             // layout definition
@@ -69,35 +71,18 @@ var DatatableRemoteAjaxDemo = function() {
                     selector: false,
                     textAlign: 'center',
                 }, {
-                    field: 'firstName',
-                    title: 'First Name',
+                    field: 'plate',
+                    title: 'Plate Number',
                     // sortable: 'asc', // default sort
                     filterable: true, // disable or enable filtering
                     width: 150,
                     // basic templating support for column rendering,
 
                 }, {
-                    field: 'lastName',
-                    title: 'Last Name',
+                    field: 'seats',
+                    title: 'Number of Seats',
                     width: 150,
                     filterable: true,
-                }, {
-                    field: 'username',
-                    title: 'User Name',
-                    filterable: true,
-                }, {
-                    field: 'phone',
-                    title: 'Phone Number',
-                    width: 200,
-                    filterable: true,
-                }, {
-                    field: 'roles',
-                    title: 'Role',
-                    filterable: true,
-                    template: function(row) {
-                        // callback function support for column rendering
-
-                        return row.roles[0].role;},
                 },
                {
                     field: 'Actions',
@@ -126,7 +111,7 @@ var DatatableRemoteAjaxDemo = function() {
                                                     </div>\
                                                     <div class="modal-footer">\
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>\
-                                                    <a href="/user/delete/' + row.id + '" class="btn btn-danger" role="button">Delete</a></div>\
+                                                    <a href="/buses/delete/' + row.id + '" class="btn btn-danger" role="button">Delete</a></div>\
 						</div>\
 						</div>\
 						</div>\
@@ -137,15 +122,6 @@ var DatatableRemoteAjaxDemo = function() {
 
         var query = datatable.getDataSourceQuery();
 
-        $('#m_form_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'Status');
-        });
-
-        $('#m_form_type').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'User Name');
-        });
-
-        $('#m_form_status, #m_form_type').selectpicker();
 
     };
 

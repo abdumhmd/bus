@@ -7,7 +7,8 @@ import java.util.Set;
  * @version 1.0
  * @created 30-Jan-2018 10:43:27 AM
  */
-@Entity@Table(name="users")
+@Entity
+@Table(name="users")
 public class Users {
 
 	@Column(name="attempt")

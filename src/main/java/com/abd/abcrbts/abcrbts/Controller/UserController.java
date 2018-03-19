@@ -6,11 +6,11 @@ import com.abd.abcrbts.abcrbts.Service.RoleService;
 import com.abd.abcrbts.abcrbts.Service.UserService;
 import com.abd.abcrbts.abcrbts.Service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,6 +28,9 @@ public class UserController {
 @RequestMapping("/user")
 public ModelAndView user(){
     ModelAndView modelAndView=new ModelAndView();
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    Users user=userService.findByUsername(auth.getName());
+    modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
     modelAndView.addObject("title","users");
     modelAndView.setViewName("/user/list");
     return modelAndView;
@@ -37,6 +40,9 @@ public ModelAndView user(){
 public ModelAndView list()
 {
     ModelAndView modelAndView=new ModelAndView();
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    Users user=userService.findByUsername(auth.getName());
+    modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
     modelAndView.addObject("title","users");
     Users users=new Users();
     Role role=new Role();
@@ -65,10 +71,15 @@ public ModelAndView list()
     {
         Users users=new Users();
         ModelAndView modelAndView=new ModelAndView();
+
         modelAndView.addObject("users",users);
         modelAndView.setViewName("login");
 
         return modelAndView;
     }
-
+    @GetMapping("user/delete/{id}")
+    public String delete(@PathVariable int id) {
+        userService.delete(id);
+        return "redirect:/user";
+    }
 }

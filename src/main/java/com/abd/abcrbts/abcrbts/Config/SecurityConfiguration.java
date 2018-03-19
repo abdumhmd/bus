@@ -40,6 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/ticket/**/**").hasAuthority("TICKET_OFFICER")
                 .antMatchers("/routes/**/**").hasAuthority("ADMIN")
                 .antMatchers("/buses/**/**").hasAuthority("ADMIN")
+
                 .antMatchers("/schedule/**/**").hasAuthority("ADMIN")
                 .antMatchers("/user/**/**").hasAuthority("ADMIN")
                 .antMatchers("/agents/**/**").hasAuthority("ADMIN")

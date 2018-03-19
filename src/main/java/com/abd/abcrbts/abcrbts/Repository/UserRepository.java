@@ -20,6 +20,8 @@ public interface UserRepository extends JpaRepository<Users,Integer> {
     List<Users> findAll();
     Users findUsersByUsername(String username);
 
+    void deleteById(Integer id);
+
     @Modifying(clearAutomatically = true)
     @Query(value = "INSERT INTO user_role VALUES (?,?)", nativeQuery = true)
     @Transactional

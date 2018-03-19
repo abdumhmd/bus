@@ -53,14 +53,14 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<!--begin::Form-->
-											<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+											<form th:object="${bus}" method="POST" th:action="@{/buses/new}" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
 												<div class="m-portlet__body">
 													<div class="form-group m-form__group row">
 														<div class="col-lg-6">
 															<label>
 																Plate Number:
 															</label>
-															<input type="text" class="form-control m-input" required="true" placeholder="Plate Number...."/>
+															<input type="text" name="plate" class="form-control m-input" required="true" placeholder="Plate Number...."/>
 															<span class="m-form__help">
 														Please enter Plate Number
 													</span>
@@ -83,8 +83,11 @@ License: You must have a valid license purchased only from themeforest(the above
 															<div class="m-ion-range-slider">
 
 
-																<input type="hidden" id="m_slider_1" class="irs-hidden-input" tabindex="-1" readonly="" value="10"/>
+																<input name="seats" type="hidden" id="m_slider_1" class="irs-hidden-input" tabindex="-1" readonly="" />
 															</div>
+															<span class="m-form__help">
+														Please provide Number of Seats
+													</span>
 														</div>
 													</div>
 												</div>
@@ -94,7 +97,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													<div class="m-form__actions m-form__actions--solid">
 														<div class="row">
 															<div class="col-lg-6">
-																<button type="reset" class="btn btn-primary">
+																<button type="submit" class="btn btn-primary">
 																	Save
 																</button>
 																<button type="reset" class="btn btn-secondary">

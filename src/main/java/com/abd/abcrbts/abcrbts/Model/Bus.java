@@ -16,10 +16,12 @@ public class Bus {
 
 	@Id@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(name="name")
-	private String name;
+	@Column(name="plate")
+	private String plate;
 	@Column(name="seats")
 	private int seats;
+	@Column(name="assigned",columnDefinition = "BOOLEAN DEFAULT 0")
+    private boolean assigned;
 
     public int getId() {
         return id;
@@ -29,12 +31,20 @@ public class Bus {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public boolean isAssigned() {
+        return assigned;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAssigned(boolean assigned) {
+        this.assigned = assigned;
+    }
+
+    public String getPlate() {
+        return plate;
+    }
+
+    public void setPlate(String plate) {
+        this.plate = plate;
     }
 
     public int getSeats() {
