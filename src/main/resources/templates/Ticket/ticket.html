@@ -89,13 +89,9 @@ License: You must have a valid license purchased only from themeforest(the above
 																Route:
 															</label>
 															<div class="m-input-icon m-input-icon--right">
-																<select id="e1" class="col-lg-12" title="Select a Route">
+																<select id="e1" class="col-lg-12" name="bus" title="Select a Route" required="true">
 																	<option></option>
-																	<option>Abd</option>
-																	<option>this</option>
-																	<option>is</option>
-																	<option>test</option>
-																	<option>Select2</option>
+																	<option th:each="operator : ${route}" th:value="${operator.id}" th:inline="text">[[${operator.departure}]] - [[${operator.destination}]]</option>
 																</select>
 															</div>
 															<span class="m-form__help">
