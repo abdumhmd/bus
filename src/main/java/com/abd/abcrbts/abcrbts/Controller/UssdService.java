@@ -86,17 +86,14 @@ public class UssdService {
                     }
                     mtUssdReq = generateMTRequest(msg, moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
                     menuStates.add("electronics.page");
-                    switch (moUssdReq.getMessage()) {
-                        case "1":
-                            destination=routeService.findAll();
-                            msg="Select a Destination City\n";
-                            for(int i=0;i<departure.size();i++)
-                            {
-                                msg=msg+Math.addExact(i,1)+":"+departure.get(i).getDestination();
-                            }
-                            mtUssdReq=generateMTRequest(msg,moUssdReq.getSessionId(),OPERATION_MT_CONT,destinationAddress);
+                    if(menuStates.get(menuStates.size()-3)=="welcome.page") {
+                        destination = routeService.findAll();
+                        msg = "Select a Destination City\n";
+                        for (int i = 0; i < departure.size(); i++) {
+                            msg = msg + Math.addExact(i, 1) + ":" + departure.get(i).getDestination();
+                        }
+                        mtUssdReq = generateMTRequest(msg, moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress); }
 
-                    }
                     break;
                 case SERVICE_COSMETICS_CODE:
                     mtUssdReq = generateMTRequest(propertyReader.readProperty("cosmetics.page"), moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
