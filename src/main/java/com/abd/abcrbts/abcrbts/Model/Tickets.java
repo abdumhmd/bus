@@ -14,14 +14,26 @@ public class Tickets {
 	private Agents agents;
 	@Id@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@ManyToOne
-	private Passenger passenger;
+	@Column(name = "passenger_phone")
+	private String passengerPhone;
+	@Column(name = "passenger_name")
+	private String passengerName;
 	@ManyToOne
 	private Route route;
 	@ManyToOne
 	private Users soldBy;
 	@Column(name="date" ,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")@Temporal(TemporalType.DATE)
 	private Date timeSold;
+	@Column(name="departure_date")
+	private Date departureDate;
+
+	public Date getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(Date departureDate) {
+		this.departureDate = departureDate;
+	}
 
 	public Agents getAgents() {
 		return agents;
@@ -39,12 +51,20 @@ public class Tickets {
 		this.id = id;
 	}
 
-	public Passenger getPassenger() {
-		return passenger;
+	public String getPassengerPhone() {
+		return passengerPhone;
 	}
 
-	public void setPassenger(Passenger passenger) {
-		this.passenger = passenger;
+	public void setPassengerPhone(String passengerPhone) {
+		this.passengerPhone = passengerPhone;
+	}
+
+	public String getPassengerName() {
+		return passengerName;
+	}
+
+	public void setPassengerName(String passengerName) {
+		this.passengerName = passengerName;
 	}
 
 	public Route getRoute() {
