@@ -7,10 +7,13 @@ import com.abd.abcrbts.abcrbts.Repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.URL;
+import java.util.Arrays;
 import java.util.Date;
 
 @Service
 public class TicketServiceImpl implements TicketService{
+
 
     @Autowired
     private TicketRepository ticketRepository;
@@ -34,4 +37,10 @@ public class TicketServiceImpl implements TicketService{
     public Integer countByRouteAndDate(Route route, Date departureDate) {
         return ticketRepository.countTicketsByRouteAndDepartureDate(route,departureDate);
     }
+
+    @Override
+    public Tickets findById(Long id) {
+        return ticketRepository.findTicketsById(id);
+    }
+
 }

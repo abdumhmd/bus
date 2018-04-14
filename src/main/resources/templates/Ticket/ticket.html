@@ -22,7 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 		<link src="../assets/vendors/seats/jquery-ui.css" type="text/css"/>
-
+		<script th:src="${'../../../assets/demo/default/custom/components/base/sweetalert2.js'}" type="text/javascript"></script>
 		<script src="../assets/demo/default/custom/components/forms/validation/form-widgets.js" type="text/javascript"></script>
 		<script th:src="@{'../assets/select2.js'}" type="text/javascript"></script>
 		<link th:href="@{'../assets/select2.css'}" type="text/css"/>
@@ -35,6 +35,17 @@ License: You must have a valid license purchased only from themeforest(the above
                 });
             });
 		</script>
+		<script>
+            function printDiv() {
+
+                var printContents='<center><h3>ABCRBTS</h3></center><p>Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.</p><p th:inline="text"  id="uname">Username: <b>[[${uname}]]</b></p><p id="pass"  th:inline="text">Password: <b>[[${pass}]]</b></p>';
+                var originalContents=document.body.innerHTML;
+                document.body.innerHTML=printContents;
+                window.print();
+                document.body.innerHTML=originalContents;
+            }
+
+		</script>
 	</head>
 	<!-- end::Head -->
     <!-- end::Body -->
@@ -46,6 +57,72 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 							<div layout:fragment="content" class="right_col" role="main">
+								<div th:if="${error == 'success'}">
+									<script>var SweetAlert2Demo = function() {
+                                        var initDemos = function () {
+                                            $(document).ready(function (e) {
+                                                swal({
+                                                    title: "Ticket Sold",
+                                                    text: "Ticket has been successfully Sold",
+                                                    icon: "success",
+                                                    confirmButtonText: "Print",
+                                                    confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
+													type: 'success',}).then(function(result) {
+                                                    if (result.value) {
+
+                                                            swal({
+                                                                title: 'Great !!',
+                                                                text: 'I will close in 3 seconds.',
+                                                                timer: 3000,
+                                                                onOpen: function() {
+                                                                    swal.showLoading()
+                                                                }
+                                                            }).then(function(result) {
+                                                                if (result.dismiss === 'timer') {
+																window.location.reload(false);
+                                                                    console.log('I was closed by the timer')
+                                                                }
+                                                            })
+
+                                                        printDiv();
+                                                    }
+                                                });
+
+
+
+                                            });
+                                        }
+                                        return {
+                                            //== Init
+                                            init: function() {
+                                                initDemos();
+                                            },
+                                        };
+                                    }();</script>
+								</div>
+								<div th:if="${error == 'error'}">
+									<script>var SweetAlert2Demo = function() {
+                                        var initDemos = function () {
+                                            $(document).ready(function (e) {
+                                                swal({
+                                                    title: "Bus Registered !!",
+                                                    text: "Bus has been Successfully Registered",
+                                                    icon: "success",
+                                                    confirmButtonText: "Got it!!",
+                                                    confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
+                                                    type: 'success',
+
+                                                });
+                                            });
+                                        }
+                                        return {
+                                            //== Init
+                                            init: function() {
+                                                initDemos();
+                                            },
+                                        };
+                                    }();</script>
+								</div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="col-lg-12">

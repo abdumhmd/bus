@@ -62,14 +62,14 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<!--begin::Form-->
-											<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+											<form th:object="${agent}" method="POST" th:action="@{/agents/new}" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
 												<div class="m-portlet__body">
 													<div class="form-group m-form__group row">
 														<div class="col-lg-6">
 															<label>
 																First Name:
 															</label>
-															<input type="email" class="form-control m-input" placeholder="First name...."/>
+															<input type="text" name="firstName" class="form-control m-input" placeholder="First name...."/>
 															<span class="m-form__help">
 														Please enter First name
 													</span>
@@ -78,7 +78,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															<label class="">
 																Last Name:
 															</label>
-															<input type="email" class="form-control m-input" placeholder="Last name...."/>
+															<input type="text" name="lastName" class="form-control m-input" placeholder="Last name...."/>
 															<span class="m-form__help">
 														Please enter Last name
 													</span>
@@ -89,13 +89,26 @@ License: You must have a valid license purchased only from themeforest(the above
 															<label>
 																Phone number:
 															</label>
-															<div class="m-input-icon m-input-icon--right">
+															<!--<div class="m-input-icon m-input-icon&#45;&#45;right">
+																<div class="input-group-prepend">
+														<span class="input-group-text">
+															+251
+														</span>
+																</div>
 																<input type="text" class="form-control m-input" placeholder="Phone number"/>
-																<span class="m-input-icon__icon m-input-icon__icon--right">
+																<span class="m-input-icon__icon m-input-icon__icon&#45;&#45;right">
 															<span>
 																<i class="la la-phone"></i>
 															</span>
 														</span>
+															</div>-->
+															<div class="input-group m-input-group">
+																<div class="input-group-prepend">
+														<span class="input-group-text">
+															+251
+														</span>
+																</div>
+																<input type="text" class="form-control m-input" name="phoneNumber" placeholder="Phone number" aria-describedby="basic-addon1"/>
 															</div>
 															<span class="m-form__help">
 														Please enter Phone number
@@ -106,13 +119,17 @@ License: You must have a valid license purchased only from themeforest(the above
 																Sub City:
 															</label>
 															<div class="m-input-icon m-input-icon--right">
-																<select id="e1" class="col-lg-12" title="Select a Sub City">
+																<select name="area" id="e1" class="col-lg-12" title="Select a Sub City">
 																	<option></option>
-																	<option>Abd</option>
-																	<option>this</option>
-																	<option>is</option>
-																	<option>test</option>
-																	<option>Select2</option>
+																	<option>Nifas Silk Lafto</option>
+																	<option>Arada</option>
+																	<option>Yeka</option>
+																	<option>Bole</option>
+																	<option>Kirkos</option>
+																	<option>Kolfe Keranio</option>
+																	<option>Gulele</option>
+																	<option>Akaki Kality</option>
+																	<option>Addis Ketema</option>
 																</select>
 															</div>
 															<span class="m-form__help">
@@ -128,7 +145,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													<div class="m-form__actions m-form__actions--solid">
 														<div class="row">
 															<div class="col-lg-6">
-																<button type="reset" class="btn btn-primary">
+																<button type="submit" class="btn btn-primary">
 																	Save
 																</button>
 																<button type="reset" class="btn btn-secondary">

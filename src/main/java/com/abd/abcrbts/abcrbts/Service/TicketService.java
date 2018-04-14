@@ -11,5 +11,5 @@ public interface TicketService {
     public Integer countByDateSold(Date dateSold);
     public Integer countBySoldBy(Users users);
     public Integer countByRouteAndDate(Route route,Date departureDate);
-
+    public Tickets findById(Long id);
 }

@@ -46,14 +46,19 @@ public class TicketController {
 }
 @PostMapping("/ticket/new")
 public String sell(@Valid Tickets tickets, RedirectAttributes model){
+    System.out.println(tickets.getDepartureDate());
     System.out.println(ticketService.countByRouteAndDate(tickets.getRoute(),tickets.getDepartureDate()));
+    for(int i=0;i<tickets.getRoute().getBus().getSeats()-ticketService.countByRouteAndDate(tickets.getRoute(),tickets.getDepartureDate());i++){
     if(ticketService.countByRouteAndDate(tickets.getRoute(),tickets.getDepartureDate())<tickets.getRoute().getBus().getSeats())
     {
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
         tickets.setSoldBy(userService.findByUsername(authentication.getName()));
         ticketService.save(tickets);
+        model.addFlashAttribute("error","success");
     }
-    model.addFlashAttribute("error","success");
-    return "redirect:/routes/";
+    else
+    {
+    model.addFlashAttribute("error","error");}}
+    return "redirect:/ticket/new";
 }
 }

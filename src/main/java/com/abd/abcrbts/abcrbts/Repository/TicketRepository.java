@@ -15,4 +15,5 @@ public interface TicketRepository extends JpaRepository<Tickets,Long>{
     public Integer countTicketsByTimeSold(Date date);
     public Integer countTicketsBySoldBy(Users users);
     public Integer countTicketsByRouteAndDepartureDate(Route route,Date date);
+    public Tickets findTicketsById(Long id);
 }

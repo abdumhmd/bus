@@ -44,4 +44,14 @@ public class RouteServiceImpl implements RouteService {
     public void deleteById(Integer id) {
         routeRepository.deleteById(id);
     }
+
+    @Override
+    public List<Route> findDistinct() {
+        return routeRepository.findDistinctByDeparture();
+    }
+
+    @Override
+    public List<Route> findByDepartureAndDestination(String departure, String destination) {
+        return routeRepository.findByDestinationAndDeparture(departure,destination);
+    }
 }

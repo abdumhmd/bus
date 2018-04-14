@@ -22,6 +22,16 @@ public class Reservation {
 	private Route route;
 	@Column(name="reservationtime" ,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")@Temporal(TemporalType.DATE)
 	private Date timeReservation;
+	@Column(name="departure_date")
+	private Date departureDate;
+
+	public Date getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(Date departureDate) {
+		this.departureDate = departureDate;
+	}
 
 	public Long getId() {
 		return id;

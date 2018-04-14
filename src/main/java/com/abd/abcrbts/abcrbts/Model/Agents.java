@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * @created 30-Jan-2018 10:43:27 AM
  */
 @Entity
-@Table(name="user")
+@Table(name="agent")
 public class Agents {
 
 	@Column(name="area")
@@ -21,10 +21,30 @@ public class Agents {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(name="phoneNember")
-	private int phoneNember;
+	@Column(name="phonenumber")
+	private String phoneNumber;
 	@Column(name="pin")
-	private int pin;
+	private String pin;
+	@Column(name="firstname")
+	private String firstName;
+	@Column(name = "lastname")
+	private String lastName;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
 
 	public String getArea() {
 		return area;
@@ -42,19 +62,19 @@ public class Agents {
 		this.id = id;
 	}
 
-	public int getPhoneNember() {
-		return phoneNember;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhoneNember(int phoneNember) {
-		this.phoneNember = phoneNember;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public int getPin() {
+	public String getPin() {
 		return pin;
 	}
 
-	public void setPin(int pin) {
+	public void setPin(String pin) {
 		this.pin = pin;
 	}
 }

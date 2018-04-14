@@ -23,7 +23,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 		<script th:src="${'../../../assets/jquery-3.3.1.min.js'}"></script>
 		<script th:src="${'../../../assets/demo/default/custom/components/datatables/base/data-local.js'}" type="text/javascript"></script>
-
+		<script th:src="${'../../../assets/demo/default/custom/components/base/sweetalert2.js'}" type="text/javascript"></script>
 
 
 	</head>
@@ -37,6 +37,30 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 			<div layout:fragment="content" class="right_col" role="main">
+				<div th:if="${error == 'success'}">
+					<script>var SweetAlert2Demo = function() {
+                        var initDemos = function () {
+                            $(document).ready(function (e) {
+                                swal({
+                                    title: "Agent Registered !!",
+                                    text: "Agent has been Successfully Registered",
+                                    icon: "success",
+									html: '<p th:inline="text"> PIN: <b>[[${pin}]]</b> </p>',
+                                    confirmButtonText: "Got it!!",
+                                    confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
+                                    type: 'success',
+
+                                });
+                            });
+                        }
+                        return {
+                            //== Init
+                            init: function() {
+                                initDemos();
+                            },
+                        };
+                    }();</script>
+				</div>
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="col-lg-12">

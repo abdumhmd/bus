@@ -14,4 +14,14 @@ public class ReservationServiceImpl implements ReservationService {
     public Reservation save(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
+
+    @Override
+    public Reservation findByRefNum(String refNum) {
+        return reservationRepository.findByRefNumber(refNum);
+    }
+
+    @Override
+    public void updatePaid(String refNum) {
+         reservationRepository.updatePaid(refNum);
+    }
 }
