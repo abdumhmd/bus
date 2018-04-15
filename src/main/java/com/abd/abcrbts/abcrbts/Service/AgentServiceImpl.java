@@ -36,4 +36,9 @@ public class AgentServiceImpl implements AgentService {
         agents.setPin(UUID.randomUUID().toString().substring(0,4));
         return agentRepository.save(agents);
     }
+
+    @Override
+    public void delete(Integer id) {
+        agentRepository.delete(id);
+    }
 }

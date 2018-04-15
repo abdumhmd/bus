@@ -11,4 +11,5 @@ public interface AgentRepository extends JpaRepository<Agents,Integer>{
     public List<Agents> findAll();
     public Agents save(Agents agents);
     public Agents findAgentsByPhoneNumberAndPin(String phone,String pin);
+    public void deleteAgentsById(Integer id);
 }
