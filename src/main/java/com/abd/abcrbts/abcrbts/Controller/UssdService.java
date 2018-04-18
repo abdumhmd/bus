@@ -37,7 +37,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by dinesh on 3/9/17.
+ * Created by Abdurahmanekram on 3/9/17.
  */
 @Controller
 public class UssdService {
@@ -52,18 +52,15 @@ public class UssdService {
     private AgentService agentService;
 
     // Service messages
-    private static final String SERVICE_EXIT_CODE = "000";
-    private static final String SERVICE_PREV_CODE = "999";
-    private static final String SERVICE_INIT_CODE = "*724#";
-    private static final String SERVICE_ELECTRONICS_CODE = "1";
-    private static final String SERVICE_COSMETICS_CODE = "2";
-    private static final String SERVICE_HOUSEHOLDS_CODE = "3";
     private static final String REQUEST_SEND_URL = "http://localhost:7000/ussd/send";
     private static final String OPERATION_MT_CONT = "mt-cont";
     private static final String OPERATION_MT_FIN = "mt-fin";
+
+
     Agents agents;
     java.sql.Date date1;
-    PropertyReader propertyReader = new PropertyReader("messages.properties");
+
+
 
     // List to store the states of the menus
     private ArrayList<String> menuStates = new ArrayList<>();
@@ -181,6 +178,7 @@ public class UssdService {
         }
         else if("mo-cont".equals(moUssdReq.getUssdOperation())&& "Confirm".equals(sessions)){
 
+            System.out.println(destinationAddress.substring(4));
             agents = agentService.findByPhoneAndPin(destinationAddress.substring(4),moUssdReq.getMessage());
             if(agents==null)
             {
@@ -285,14 +283,5 @@ public class UssdService {
     }
 
     // Functionality of the back command
-    private String backOperation() {
-        String prevState = propertyReader.readProperty("welcome.page");
-        System.out.println(menuStates.size());
-        if (menuStates.size() > 0 && (menuStates.size() - 1) != 0) {
-            prevState = propertyReader.readProperty(menuStates.get(menuStates.size() - 2));
-            menuStates.remove(menuStates.size() - 1);
-        }
-        return prevState;
-    }
 
 }
