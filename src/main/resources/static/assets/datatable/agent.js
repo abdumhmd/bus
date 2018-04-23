@@ -59,7 +59,7 @@ var DatatableRemoteAjaxDemo = function() {
             search: {
                 input: $('#generalSearch'),
             },
-
+            dom: "<'toolbar'>Bftipr",
             buttons:[
                 {extend:"print",className:"btn dark btn-outline"},
                 {extend:"copy",className:"btn red btn-outline"},

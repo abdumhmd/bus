@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script>
             function printDiv() {
 
-                var printContents='<center><h3>ABCRBTS</h3></center><p>Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.Welcome To Agent Based Cross Regional Bus Ticketing System. These are your credentials to Access the System. These credentials are confidential.</p><p th:inline="text"  id="uname">Username: <b>[[${uname}]]</b></p><p id="pass"  th:inline="text">Password: <b>[[${pass}]]</b></p>';
+                var printContents='<center><h3>ABCRBTS</h3></center><p th:inline="text"  id="uname">Departure Date: [[${departureDate}]]</p><p id="pass" class="pull-right"  th:inline="text">Departure Time: <b>[[${time}]]</b></p>';
                 var originalContents=document.body.innerHTML;
                 document.body.innerHTML=printContents;
                 window.print();
@@ -84,7 +84,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 }
                                                             })
 
-                                                        printDiv();
+                                                            var win = window.open("reciept", '_blank');
+                                                            win.focus();
+
+
                                                     }
                                                 });
 
@@ -150,7 +153,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																Departure Date:
 															</label>
 															<div class="m-input-icon m-input-icon--right">
-																<input name="departureDate" type="text" class="form-control m-input" placeholder="Date" id="m_datepicker"/>
+																<input name="departureDate" autocomplete="false" type="text" class="form-control m-input" placeholder="Date" id="m_datepicker"/>
 																<span class="m-input-icon__icon m-input-icon__icon--right">
 															<span>
 																<i class="la la-calendar"></i>

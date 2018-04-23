@@ -29,6 +29,7 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
+    Tickets tickets1;
 
 @RequestMapping("/ticket/new")
     public ModelAndView ticket()
@@ -55,10 +56,37 @@ public String sell(@Valid Tickets tickets, RedirectAttributes model){
         tickets.setSoldBy(userService.findByUsername(authentication.getName()));
         ticketService.save(tickets);
         model.addFlashAttribute("error","success");
+        model.addFlashAttribute("departureDate",tickets.getDepartureDate());
+        model.addFlashAttribute("time",tickets.getRoute().getTime());
+        model.addFlashAttribute("departureCity",tickets.getRoute().getDeparture());
+        model.addFlashAttribute("destinationCity",tickets.getRoute().getDestination());
+        model.addFlashAttribute("price",tickets.getRoute().getPrice());
+        model.addFlashAttribute("seat",ticketService.countByRouteAndDate(tickets.getRoute(),tickets.getDepartureDate())+1);
+        model.addFlashAttribute("soldBy",tickets.getSoldBy());
+        model.addFlashAttribute("plate",tickets.getRoute().getBus().getPlate());
+        tickets1=tickets;
     }
     else
     {
     model.addFlashAttribute("error","error");}}
     return "redirect:/ticket/new";
+}
+@RequestMapping(value = "/ticket/reciept")
+    public ModelAndView reciept()
+{
+    ModelAndView modelAndView=new ModelAndView();
+    modelAndView.setViewName("ticket/reciept");
+    modelAndView.addObject("error","success");
+    modelAndView.addObject("departureDate",tickets1.getDepartureDate());
+    modelAndView.addObject("time",tickets1.getRoute().getTime());
+    modelAndView.addObject("departureCity",tickets1.getRoute().getDeparture());
+    modelAndView.addObject("destinationCity",tickets1.getRoute().getDestination());
+    modelAndView.addObject("price",tickets1.getRoute().getPrice());
+    modelAndView.addObject("seat",ticketService.countByRouteAndDate(tickets1.getRoute(),tickets1.getDepartureDate())+1);
+    modelAndView.addObject("soldBy",tickets1.getSoldBy().getFirstName()+" "+tickets1.getSoldBy().getLastName());
+    modelAndView.addObject("plate",tickets1.getRoute().getBus().getPlate());
+    modelAndView.addObject("name",tickets1.getPassengerName());
+    modelAndView.addObject("phone",tickets1.getPassengerPhone());
+    return modelAndView;
 }
 }
