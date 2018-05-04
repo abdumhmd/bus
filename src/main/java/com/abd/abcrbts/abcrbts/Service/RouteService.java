@@ -13,4 +13,5 @@ public interface RouteService {
     public void deleteById(Integer id);
     public List<Route> findDistinct();
     public List<Route> findByDepartureAndDestination(String departure,String destination);
+    public List<Route> dataTable();
 }

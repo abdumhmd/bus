@@ -14,9 +14,16 @@ public class RouteRestController {
     @Autowired
     private RouteService routeService;
 
-    @RequestMapping(value = "/routes/table",method = RequestMethod.GET)
+    @RequestMapping(value = "/routes/table",method = RequestMethod.GET,produces = "application/json")
     public List<Route> findList()
     {
-        return routeService.findAll();
+        List<Route> data=routeService.findAll();
+        return data;
+    }
+    @RequestMapping(value = "/routes/tables",method = RequestMethod.GET,produces = "application/json")
+    public List<Route> dataTable()
+    {
+        List<Route> data=routeService.dataTable();
+        return data;
     }
 }

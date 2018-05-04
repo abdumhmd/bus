@@ -20,5 +20,7 @@ public interface RouteRepository extends JpaRepository<Route,Integer>{
     List<Route> findRouteByDestination(String destination);
     Route findById(Integer id);
     List<Route> findByDestinationAndDeparture(String departure,String destination);
+    @Query("SELECT r.id,r.departure,r.destination,r.time,r.price,r.bus.plate from Route r")
+    List<Route> dataTable();
 
 }

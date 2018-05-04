@@ -37,7 +37,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Abdurahmanekram on 3/9/17.
+ * Created by Abdurahman on 3/9/17.
  */
 @Controller
 public class UssdService {

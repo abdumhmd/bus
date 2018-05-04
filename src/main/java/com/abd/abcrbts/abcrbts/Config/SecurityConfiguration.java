@@ -29,13 +29,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**");
+        web.ignoring().antMatchers("/resources/**/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/").authenticated()
+
                 .antMatchers("/notification/**/**").hasAuthority("ADMIN")
                 .antMatchers("/ticket/**/**").hasAuthority("TICKET_OFFICER")
                 .antMatchers("/routes/**/**").hasAuthority("ADMIN")

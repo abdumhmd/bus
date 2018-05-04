@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
+Version: 4.7.5
 Author: KeenThemes
 Website: http://www.keenthemes.com/
 Contact: support@keenthemes.com
@@ -11,339 +12,350 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 -->
-
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	<!-- begin::Head -->
-	<head>
-		<meta charset="utf-8" />
-		<title>
-			ABCRBTS | Layout
-		</title>
-		<meta name="description" content="Latest updates and statistic charts"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-		<!--begin::Web font -->
-		<script th:src="${'assets/webfonts.js'}"></script>
-		<script>
-          WebFont.load({
-            google: {"families":["Montserrat:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-          });
-		</script>
-		<!--end::Web font -->
-        <!--begin::Base Styles -->
-		<link th:href="${'../assets/vendors/base/vendors.bundle.css'}" rel="stylesheet" type="text/css" />
-		<link th:href="${'../assets/demo/demo3/base/style.bundle.css'}" rel="stylesheet" type="text/css" />
-		<!--end::Base Styles -->
-		<link rel="shortcut icon" th:href="${'../assets/demo/demo3/media/img/logo/favicon.ico'}" />
-		<script th:src="${'../../../assets/jquery-3.3.1.min.js'}"></script>
-		<script th:src="@{'../assets/demo/default/custom/components/forms/validation/form-widgets.js'}" type="text/javascript"></script>
-	</head>
-	<!-- end::Head -->
-    <!-- end::Body -->
-	<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-light m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
-		<!-- begin:: Page -->
-		<div class="m-grid m-grid--hor m-grid--root m-page">
-			<!-- BEGIN: Header -->
-			<header class="m-grid__item    m-header "  data-minimize-offset="200" data-minimize-mobile-offset="200" >
-				<div class="m-container m-container--fluid m-container--full-height">
-					<div class="m-stack m-stack--ver m-stack--desktop">
-						<!-- BEGIN: Brand -->
-						<div class="m-stack__item m-brand  m-brand--skin-light ">
-							<div class="m-stack m-stack--ver m-stack--general">
-								<div class="m-stack__item m-stack__item--middle m-stack__item--center m-brand__logo">
-									<a href="index.html" class="m-brand__logo-wrapper">
-										<img alt="" src="../assets/app/media/img/icons/bus.png"/>
-									</a>
-								</div>
-								<div class="m-stack__item m-stack__item--middle m-brand__tools">
-									<!-- BEGIN: Responsive Aside Left Menu Toggler -->
-									<a href="javascript:;" id="m_aside_left_offcanvas_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-tablet-and-mobile-inline-block">
-										<span></span>
-									</a>
-									<!-- END -->
-							<!-- BEGIN: Responsive Header Menu Toggler -->
-									<a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
-										<span></span>
-									</a>
-									<!-- END -->
-			<!-- BEGIN: Topbar Toggler -->
-									<a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
-										<i class="flaticon-more"></i>
-									</a>
-									<!-- BEGIN: Topbar Toggler -->
-								</div>
-							</div>
-						</div>
-						<!-- END: Brand -->
-						<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
-							<!-- BEGIN: Horizontal Menu -->
-							<button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn">
-								<i class="la la-close"></i>
-							</button>
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
 
-							<!-- END: Horizontal Menu -->								<!-- BEGIN: Topbar -->
-							<div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
-								<div class="m-stack__item m-topbar__nav-wrapper">
-									<ul class="m-topbar__nav m-nav m-nav--inline">
-										<li class="
-	m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light"
-	data-dropdown-toggle="click" data-dropdown-persistent="true" id="m_quicksearch" data-search-type="dropdown">
-											<a href="#" class="m-nav__link m-dropdown__toggle">
-												<span class="m-nav__link-icon">
-													<i class="flaticon-search-1"></i>
-												</span>
-											</a>
-											<div class="m-dropdown__wrapper">
-												<span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
-												<div class="m-dropdown__inner ">
-													<div class="m-dropdown__header">
-														<form  class="m-list-search__form">
-															<div class="m-list-search__form-wrapper">
-																<span class="m-list-search__form-input-wrapper">
-																	<input id="m_quicksearch_input" autocomplete="off" type="text" name="q" class="m-list-search__form-input" value="" placeholder="Search..."/>
-																</span>
-																<span class="m-list-search__form-icon-close" id="m_quicksearch_close">
-																	<i class="la la-remove"></i>
-																</span>
-															</div>
-														</form>
-													</div>
-													<div class="m-dropdown__body">
-														<div class="m-dropdown__scrollable m-scrollable" data-max-height="300" data-mobile-max-height="200">
-															<div class="m-dropdown__content"></div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
+    <head>
+        <meta charset="utf-8" />
 
-										<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
-											<a href="#" class="m-nav__link m-dropdown__toggle m-menu__link m-menu__toggle">
-												<span class="m-topbar__userpic">
-													<img th:src="@{'../../assets/app/media/img/users/people.png'}" alt=""/>
-												</span>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="Preview page of Metronic Admin Theme #2 for blank page layout" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+       <!-- <link th:href="${'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all'}" rel="stylesheet" type="text/css" />-->
+        <link th:href="${'../assets/global/plugins/font-awesome/css/font-awesome.min.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/global/plugins/simple-line-icons/simple-line-icons.min.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/global/plugins/bootstrap/css/bootstrap.min.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css'}" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link th:href="${'../assets/global/css/components-md.min.css'}" rel="stylesheet" id="style_components" type="text/css" />
+        <link th:href="${'../assets/global/css/plugins-md.min.css'}" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link th:href="${'../assets/layouts/layout2/css/layout.min.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/layouts/layout2/css/themes/blue.min.css'}" rel="stylesheet" type="text/css" id="style_color" />
+        <link th:href="${'../assets/layouts/layout2/css/custom.min.css'}" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
 
-											</a>
-											<div class="m-dropdown__wrapper">
-												<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-												<div class="m-dropdown__inner">
-													<div class="m-dropdown__header m--align-center" style="background: url(../../assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
-														<div class="m-card-user m-card-user--skin-dark">
-															<div class="m-card-user__pic">
-																<img th:src="@{'../../assets/app/media/img/users/people.png'}" alt=""/>
-															</div>
-															<div class="m-card-user__details">
-																<span class="m-card-user__name m--font-weight-500">
-																	  <p th:inline="text"> [[${fullname}]] </p>
-																</span>
-															</div>
-														</div>
-													</div>
-													<div class="m-dropdown__body">
-														<div class="m-dropdown__content">
-															<ul class="m-nav m-nav--skin-light">
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="index.html">
+                        <img src="../assets/layouts/layout2/img/logo-default.png" alt="logo" class="logo-default" /> </a>
+                    <div class="menu-toggler sidebar-toggler">
+                        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                    </div>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN PAGE ACTIONS -->
+                <!-- DOC: Remove "hide" class to enable the page header actions -->
 
-																<li class="m-nav__item">
-																	<a href="profile.html" class="m-nav__link">
-																		<i class="m-nav__link-icon flaticon-edit"></i>
-																		<span class="m-nav__link-title">
-																			<span class="m-nav__link-wrap">
-																				<span class="m-nav__link-text">
-																					Change Password
-																				</span>
+                <!-- END PAGE ACTIONS -->
+                <!-- BEGIN PAGE TOP -->
+                <div class="page-top">
+                    <!-- BEGIN HEADER SEARCH BOX -->
+                    <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
 
-																			</span>
-																		</span>
-																	</a>
-																</li>
-																<li class="m-nav__item">
-																	<a href="/logout" class="m-nav__link">
-																		<i class="m-nav__link-icon flaticon-logout"></i>
-																		<span class="m-nav__link-text">
-																			Logout
-																		</span>
-																	</a>
-																</li>
+                    <!-- END HEADER SEARCH BOX -->
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
 
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
+                            <!-- BEGIN USER LOGIN DROPDOWN -->
+                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                            <li class="dropdown dropdown-user">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <img alt="" class="img-circle" src="../assets/layouts/layout2/img/people.png" />
+                                    <span class="username username-hide-on-mobile" th:inline="text"> [[${fullname}]] </span>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+                                    <li>
+                                        <a href="page_user_profile_1.html">
+                                            <i class="icon-lock"></i> Change Password</a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout">
+                                            <i class="icon-logout"></i> Logout </a>
+                                    </li>
 
-										<li id="m_quick_sidebar_toggle" class="m-nav__item">
-											<a href="#" class="m-nav__link m-dropdown__toggle">
-												<span class="m-nav__link-icon">
-													<i class="flaticon-menu-button"></i>
-												</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
+                                </ul>
+                            </li>
+                            <!-- END USER LOGIN DROPDOWN -->
 
-							<!-- END: Topbar -->
-						</div>
-					</div>
-				</div>
-			</header>
-			<!-- END: Header -->		
-		<!-- begin::Body -->
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
-				<!-- BEGIN: Left Aside -->
-				<button class="m-aside-left-close m-aside-left-close--skin-light" id="m_aside_left_close_btn">
-					<i class="la la-close"></i>
-				</button>
-				<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-light ">
-					<!-- BEGIN: Aside Menu -->
-	<div 
-		id="m_ver_menu" 
-		class="m-aside-menu  m-aside-menu--skin-light m-aside-menu--submenu-skin-light m-aside-menu--dropdown " 
-		data-menu-vertical="true"
-		 data-menu-dropdown="true" data-menu-scrollable="true" data-menu-dropdown-timeout="500"  
-		>
-						<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
-							<li class="m-menu__item" aria-haspopup="true" th:classappend="${ title == 'Dashboard'  ? 'm-menu__item--active' : ''}" >
-								<a  href="index.html" class="m-menu__link ">
-									<span class="m-menu__item-here"></span>
-									<i class="m-menu__link-icon flaticon-line-graph"></i>
-									<span class="m-menu__link-text">
-										Dashboard
-									</span>
-								</a>
-							</li>
-							<li class="m-menu__item " aria-haspopup="true" th:classappend="${ title == 'Tickets'  ? 'm-menu__item--active' : ''}">
-								<a  href="/ticket/new" class="m-menu__link ">
-									<span class="m-menu__item-here"></span>
-									<i class="m-menu__link-icon flaticon-list-2"></i>
-									<span class="m-menu__link-text">
-										Tickets
-									</span>
-								</a>
-							</li>
-							<li class="m-menu__item " aria-haspopup="true" th:classappend="${ title == 'Routes'  ? 'm-menu__item--active' : ''}">
-								<a  href="/routes" class="m-menu__link ">
-									<span class="m-menu__item-here"></span>
-									<i class="m-menu__link-icon flaticon-route"></i>
-									<span class="m-menu__link-text">
-										Routes
-									</span>
-								</a>
-							</li>
-							<li class="m-menu__item " aria-haspopup="true" th:classappend="${ title == 'Buses'  ? 'm-menu__item--active' : ''}">
-								<a  href="/buses" class="m-menu__link ">
-									<span class="m-menu__item-here"></span>
-									<i class="m-menu__link-icon la la-bus"></i>
-									<span class="m-menu__link-text">
-										Buses
-									</span>
-								</a>
-							</li>
-							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" th:classappend="${ title == 'users'  ? 'm-menu__item--active' : ''}" >
-								<a href="/user/" class="m-menu__link">
-									<span class="m-menu__item-here"></span>
-									<i class="m-menu__link-icon flaticon-users"></i>
-									<span class="m-menu__link-text">
-										Users
-									</span>
-									<i class="m-menu__ver-arrow la la-angle-right"></i>
-								</a>
+                        </ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END PAGE TOP -->
+            </div>
+            <!-- END HEADER INNER -->
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- END SIDEBAR -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div class="page-sidebar navbar-collapse collapse">
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="nav-item start " th:classappend="${ title == 'Dashboard'  ? 'm-menu__item--active' : ''}">
+                            <a href="../home" class="nav-link nav-toggle">
+                                <i class="icon-home"></i>
+                                <span class="title">Dashboard</span>
+                                <span class="arrow"></span>
+                            </a>
 
-							</li>
-							<li class="m-menu__item  m-menu__item--submenu m-menu__item--bottom-2" aria-haspopup="true" th:classappend="${ title == 'Agents'  ? 'm-menu__item--active' : ''}" >
-								<a  href="/agents" class="m-menu__link">
-									<i class="m-menu__link-icon flaticon-profile-1"></i>
-									<span class="m-menu__link-text">
-										Agents
-									</span>
-									<i class="m-menu__ver-arrow la la-angle-right"></i>
-								</a>
+                        </li>
+                        <li class="nav-item  " th:classappend="${ title == 'Tickets'  ? 'open' : ''}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-book-open"></i>
+                                <span class="title">Tickets</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="../ticket/new" class="nav-link ">
+                                        <span class="title">Single Ticket</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="../ticket/family" class="nav-link ">
+                                        <span class="title">Family Ticket</span>
+                                    </a>
+                                </li>
 
-							</li>
-							<li class="m-menu__item  m-menu__item--submenu m-menu__item--bottom-1" aria-haspopup="true"  th:classappend="${ title == 'Notifications'  ? 'm-menu__item--active' : ''}">
-								<a  href="/notifications" class="m-menu__link">
-									<i class="m-menu__link-icon flaticon-chat-1"></i>
-									<span class="m-menu__link-text">
-										Notification
-									</span>
-									<i class="m-menu__ver-arrow la la-angle-right"></i>
-								</a>
+                            </ul>
+                        </li>
+                        <li class="nav-item  " th:classappend="${ title == 'Buses'  ? 'open' : ''}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa-bus"></i>
+                                <span class="title">Buses</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="../buses" class="nav-link ">
+                                        <span class="title">List</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="../buses/new" class="nav-link ">
+                                        <span class="title">New Bus</span>
+                                    </a>
+                                </li>
 
-							</li>
-							<li class="m-menu__item  m-menu__item--submenu m-menu__item--bottom-1" aria-haspopup="true" th:classappend="${ title == 'Reports'  ? 'm-menu__item--active' : ''}" >
-								<a  href="#" class="m-menu__link">
-									<i class="m-menu__link-icon flaticon-layers"></i>
-									<span class="m-menu__link-text">
-										Reports
-									</span>
-									<i class="m-menu__ver-arrow la la-angle-right"></i>
-								</a>
+                            </ul>
+                        </li>
+                        <li class="nav-item  " th:classappend="${ title == 'Routes'  ? 'open' : ''}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-map"></i>
+                                <span class="title">Routes</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="../routes" class="nav-link ">
+                                        <span class="title">List</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="../routes/new" class="nav-link ">
+                                        <span class="title">New Route</span>
+                                    </a>
+                                </li>
 
-							</li>
-						</ul>
-					</div>
-					<!-- END: Aside Menu -->
-				</div>
-				<!-- END: Left Aside -->
-				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+                            </ul>
+                        </li>
+                        <li class="nav-item  " th:classappend="${ title == 'users'  ? 'open' : ''}">
+                            <a href="?p=" class="nav-link nav-toggle">
+                                <i class="icon-users"></i>
+                                <span class="title">Users</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="../user" class="nav-link ">
+                                        <span class="title">List</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="../user/new" class="nav-link ">
+                                        <span class="title">New User</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item  " th:classappend="${ title == 'Agents'  ? 'open' : ''}" >
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-user-following"></i>
+                                <span class="title">Agents</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="../agents" class="nav-link ">
+                                        <span class="title">List</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="../agents/new" class="nav-link ">
+                                        <span class="title">New Agent</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item  " th:classappend="${ title == 'Notifications'  ? 'open' : ''}">
+                            <a href="/notifications" class="nav-link nav-toggle">
+                                <i class="icon-envelope"></i>
+                                <span class="title">Notifications</span>
+                                <span class="arrow"></span>
+                            </a>
+
+                        </li>
+                        <li class="nav-item " th:classappend="${ title == 'Reports'  ? 'open' : ''}" >
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-printer"></i>
+                                <span class="title">Reports</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  active">
+                                    <a href="layout_blank_page.html" class="nav-link ">
+                                        <span class="title">Sales By Agent</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="layout_language_bar.html" class="nav-link ">
+                                        <span class="title">Sales By Ticket Officer</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="layout_footer_fixed.html" class="nav-link ">
+                                        <span class="title">Sales By Month</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="layout_boxed_page.html" class="nav-link ">
+                                        <span class="title">Sales By Route</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                </div>
+                <!-- END SIDEBAR -->
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div layout:fragment="content" class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
 
 
-					<div class="content">
-						<div layout:fragment="breadcrumb"></div>
-						<div class="container-fluid">
-							<div class="row">
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
 
-								<div layout:fragment="content">
+            <!-- END QUICK SIDEBAR -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2016 &copy; ABCRBTS
+                <a target="_blank" href="http://keenthemes.com">Habesha Bus</a> &nbsp;|&nbsp;
+                <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
+            </div>
+            <!-- END FOOTER -->
+        </div>
+            <!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script>
+<script src="../assets/global/plugins/ie8.fix.min.js"></script>
+<![endif]-->
+            <!-- BEGIN CORE PLUGINS -->
+            <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script th:src="${'../assets/global/plugins/select2/js/select2.full.min.js'}" type="text/javascript"></script>
+        <script th:src="${'../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js'}" type="text/javascript"></script>
+        <script src="../assets/global/scripts/datatable.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/ion.rangeslider/js/ion.rangeSlider.min.js" type="text/javascript"></script>
 
-								</div>
+        <!-- END PAGE LEVEL PLUGINS -->
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end:: Body -->
-<!-- begin::Footer -->
-			<footer class="m-grid__item		m-footer ">
-				<div class="m-container m-container--fluid m-container--full-height m-page__container">
-					<div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
-						<div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--last">
-							<span class="m-footer__copyright">
-								<script>document.write(new Date().getFullYear())</script> &copy; ABCRBTS
-								<a href="#" class="m-link flaticon-puzzle">
+            <!-- BEGIN THEME GLOBAL SCRIPTS -->
+            <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+            <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script th:src="${'../assets/pages/scripts/components-select2.min.js'}" type="text/javascript"></script>
+        <script th:src="${'../assets/pages/scripts/components-date-time-pickers.min.js'}" type="text/javascript"></script>
+        <script src="../assets/pages/scripts/table-datatables-buttons.min.js" type="text/javascript"></script>
+        <script src="../assets/pages/scripts/components-ion-sliders.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- BEGIN THEME LAYOUT SCRIPTS -->
+            <script src="../assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
+            <script src="../assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
+            <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+            <script src="../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 
-								</a>
-							</span>
-						</div>
+            <!-- END THEME LAYOUT SCRIPTS -->
+            <script>
+                $(document).ready(function()
+                {
+                    $('#clickmewow').click(function()
+                    {
+                        $('#radio1003').attr('checked', 'checked');
+                    });
+                })
+            </script>
+    </body>
 
-					</div>
-				</div>
-			</footer>
-			<!-- end::Footer -->
-		</div>
-		<!-- end:: Page -->
-    		        <!-- begin::Quick Sidebar -->
-
-		<!-- end::Quick Sidebar -->		    
-	    <!-- begin::Scroll Top -->
-		<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500" data-scroll-speed="300">
-			<i class="la la-arrow-up"></i>
-		</div>
-		<!-- end::Scroll Top -->		    <!-- begin::Quick Nav -->
-
-		<!-- begin::Quick Nav -->	
-    	<!--begin::Base Scripts -->
-		<script src="../assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-		<script src="../assets/demo/demo3/base/scripts.bundle.js" type="text/javascript"></script>
-		<!--end::Base Scripts -->   
-        <!--begin::Page Snippets -->
-
-		<!--end::Page Snippets -->
-	</body>
-
-	<!-- end::Body -->
 </html>

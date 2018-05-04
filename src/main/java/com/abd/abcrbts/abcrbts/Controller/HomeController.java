@@ -30,10 +30,10 @@ public class HomeController {
 
        }
         if ("TICKET_OFFICER".equals(roles)) {
-            return "/ticket/ticket";
+            return "/routes/new";
         }
         else if ("ADMIN".equals(roles)){
-        return "/route/list";}
+        return "/route/route";}
         else {
             return "/login";
         }

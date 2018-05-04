@@ -54,4 +54,9 @@ public class RouteServiceImpl implements RouteService {
     public List<Route> findByDepartureAndDestination(String departure, String destination) {
         return routeRepository.findByDestinationAndDeparture(departure,destination);
     }
+
+    @Override
+    public List<Route> dataTable() {
+        return routeRepository.dataTable();
+    }
 }
