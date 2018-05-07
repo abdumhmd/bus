@@ -1,6 +1,7 @@
 package com.abd.abcrbts.abcrbts.Controller;
 
 import com.abd.abcrbts.abcrbts.Model.Users;
+import com.abd.abcrbts.abcrbts.Service.RouteService;
 import com.abd.abcrbts.abcrbts.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,12 +16,16 @@ public class NotificationController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RouteService routeService;
+
     @RequestMapping("/notifications")
     public ModelAndView notification()
     {
         ModelAndView modelAndView=new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Users user=userService.findByUsername(auth.getName());
+        modelAndView.addObject("route",routeService.findAll());
         modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
         modelAndView.addObject("title","Notifications");
         modelAndView.setViewName("/Notifications/notification");

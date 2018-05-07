@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TicketServiceImpl implements TicketService{
@@ -42,5 +43,16 @@ public class TicketServiceImpl implements TicketService{
     public Tickets findById(Long id) {
         return ticketRepository.findTicketsById(id);
     }
+
+    @Override
+    public Integer countAll() {
+        return ticketRepository.findAll().size();
+    }
+
+    @Override
+    public List<Object> monthly() {
+        return ticketRepository.monthly();
+    }
+
 
 }

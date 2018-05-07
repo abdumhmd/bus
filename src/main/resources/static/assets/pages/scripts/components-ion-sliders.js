@@ -2,13 +2,17 @@ var ComponentsIonSliders = function() {
 
     var handleBasicDemo = function() {
         // demo 1
-        $("#range_1").ionRangeSlider();
+        $("#range_1").ionRangeSlider({
+            min:2,
+            max:6,
+            from:2,
+        });
 
         // demo 2
         $("#range_2").ionRangeSlider({
-            min: 100,
-            max: 1000,
-            from: 550
+            min: 2,
+            max: 6,
+            from: 2
         });
 
         // demo 3

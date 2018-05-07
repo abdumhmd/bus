@@ -27,6 +27,19 @@ public class Tickets {
 	@Column(name="departure_date")
 	private Date departureDate;
 
+	public Tickets(Agents agents, String passengerPhone, String passengerName, Route route, Users soldBy, Date departureDate) {
+		this.agents = agents;
+		this.passengerPhone = passengerPhone;
+		this.passengerName = passengerName;
+		this.route = route;
+		this.soldBy = soldBy;
+
+		this.departureDate = departureDate;
+	}
+
+	public Tickets() {
+	}
+
 	public Date getDepartureDate() {
 		return departureDate;
 	}
