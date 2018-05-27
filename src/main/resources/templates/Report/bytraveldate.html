@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
 
-        <title>Sales By Ticket Officer | ABCRBTS</title>
+        <title>Sales By Route | ABCRBTS</title>
         <link th:href="${'../assets/global/plugins/select2/css/select2.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css'}" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
@@ -50,8 +50,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="portlet light ">
                                 <div class="portlet-title">
                                     <div class="caption font-green-haze">
-                                        <i class="icon-user-following font-green-haze"></i>
-                                        <span class="caption-subject bold uppercase"> Sales By Ticket Officer</span>
+                                        <i class="icon-map font-green-haze"></i>
+                                        <span class="caption-subject bold uppercase"> Tickets List</span>
                                     </div>
                                     <div class="actions">
                                         <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
@@ -67,28 +67,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <form role="form" method="POST"  th:action="@{/reports/byticketofficer}">
+                                    <form role="form" method="POST" th:action="@{/reports/bytraveldate}">
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <select id="single" required="required" name="user" class="form-control select2">
+                                                        <select id="single" required="required" name="route" class="form-control select2">
                                                             <option></option>
-                                                            <option th:each="operator : ${agents}" th:value="${operator.id}" th:inline="text">[[${operator.firstName}]] [[${operator.lastName}]]</option>
+                                                            <option th:each="operator : ${route}" th:value="${operator.id}" th:inline="text">[[${operator.departure}]]-[[${operator.destination}]]</option>
                                                         </select>
-
-                                                        <span class="help-block">Choose a Ticket Officer</span>
+                                                        <label for="form_control_1"></label>
+                                                        <span class="help-block">Choose an Agent</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+
+                                                <div class="col-md-6">
                                                     <div class="form-group form-md-line-input " data-date-format="dd/mm/yyyy">
-                                                        <input class="form-control form-control-inline date-picker"    required="required" name="start" size="16" type="text" value="" />
-                                                        <label >Start Date</label>
-                                                        <span class="help-block">Please provide Travel Date</span>
-                                                    </div></div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-md-line-input " data-date-format="dd/mm/yyyy">
-                                                        <input class="form-control form-control-inline date-picker"   required="required" name="end" size="16" type="text" value="" />
+                                                        <input class="form-control form-control-inline date-picker" name="traveldate"  size="16" type="text" value="" />
                                                         <label >End Date</label>
                                                         <span class="help-block">Please provide Travel Date</span>
                                                     </div></div></div>

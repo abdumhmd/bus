@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
 
-        <title>Sales By Ticket Officer | ABCRBTS</title>
+        <title>Sales By Route | ABCRBTS</title>
         <link th:href="${'../assets/global/plugins/select2/css/select2.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css'}" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
@@ -51,56 +51,47 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="portlet-title">
                                     <div class="caption font-green-haze">
                                         <i class="icon-user-following font-green-haze"></i>
-                                        <span class="caption-subject bold uppercase"> Sales By Ticket Officer</span>
+                                        <span class="caption-subject bold uppercase"> Sales By Route</span>
                                     </div>
-                                    <div class="actions">
-                                        <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
-                                            <i class="icon-cloud-upload"></i>
-                                        </a>
-                                        <a class="btn btn-circle btn-icon-only green" href="javascript:;">
-                                            <i class="icon-wrench"></i>
-                                        </a>
-                                        <a class="btn btn-circle btn-icon-only red" href="javascript:;">
-                                            <i class="icon-trash"></i>
-                                        </a>
-                                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
-                                    </div>
+
                                 </div>
-                                <div class="portlet-body form">
-                                    <form role="form" method="POST"  th:action="@{/reports/byticketofficer}">
-                                        <div class="form-body">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <select id="single" required="required" name="user" class="form-control select2">
-                                                            <option></option>
-                                                            <option th:each="operator : ${agents}" th:value="${operator.id}" th:inline="text">[[${operator.firstName}]] [[${operator.lastName}]]</option>
-                                                        </select>
+                                <div class="portlet-body">
+                                    <div class="table-container">
 
-                                                        <span class="help-block">Choose a Ticket Officer</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-md-line-input " data-date-format="dd/mm/yyyy">
-                                                        <input class="form-control form-control-inline date-picker"    required="required" name="start" size="16" type="text" value="" />
-                                                        <label >Start Date</label>
-                                                        <span class="help-block">Please provide Travel Date</span>
-                                                    </div></div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-md-line-input " data-date-format="dd/mm/yyyy">
-                                                        <input class="form-control form-control-inline date-picker"   required="required" name="end" size="16" type="text" value="" />
-                                                        <label >End Date</label>
-                                                        <span class="help-block">Please provide Travel Date</span>
-                                                    </div></div></div>
+                                        <table class="table table-striped table-bordered table-hover " id="route_report">
+                                            <thead>
+                                            <tr role="row" class="heading">
 
 
+                                                <th width="15%">Passenger Name</th>
+                                                <th width="15%">Passenger Phone</th>
+                                                <th width="15%"> Departure</th>
+                                                <th width="15%"> Destination</th>
+                                                <th width="15%"> Departure Date</th>
+                                                <th width="15%"> Date Sold </th>
+                                                <th width="10%">Price</th>
 
-                                        </div>
-                                        <div class="form-actions noborder">
-                                            <button type="submit" class="btn blue">Submit</button>
-                                            <button type="reset" class="btn default">Cancel</button>
-                                        </div>
-                                    </form>
+
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="f : *{list}">
+                                                <td th:text="${f.passengerName}"></td>
+                                                <td th:text="${f.passengerPhone}"></td>
+                                                <td th:text="${f.route.departure}"></td>
+                                                <td th:text="${f.route.destination}"></td>
+                                                <td th:text="${f.departureDate}"></td>
+                                                <td th:text="${f.timeSold}"></td>
+                                                <td th:text="${f.route.price}"></td>
+
+
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

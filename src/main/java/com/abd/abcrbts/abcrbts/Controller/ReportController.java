@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 @Controller
 public class ReportController {
     @Autowired
@@ -68,8 +70,20 @@ public class ReportController {
         modelAndView.setViewName("/Report/byRoute");
         return modelAndView;
     }
+    @RequestMapping(value = "reports/tickets",method = RequestMethod.GET)
+    public ModelAndView ticketList()
+    {
+        ModelAndView modelAndView=new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users user=userService.findByUsername(auth.getName());
+        modelAndView.addObject("route",routeService.findAll());
+        modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
+        modelAndView.addObject("title","Report");
+        modelAndView.setViewName("/Report/bytraveldate");
+        return modelAndView;
+    }
     @PostMapping("/reports/byagent")
-    public ModelAndView agentReport(@RequestParam("agent") String agent, @RequestParam("start") String start, @RequestParam("end") String end)
+    public ModelAndView agentReport(@RequestParam("agent") String agent, @RequestParam("start") Date start, @RequestParam("end") Date end)
     {
         ModelAndView modelAndView=new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -84,14 +98,47 @@ public class ReportController {
         return modelAndView;
     }
     @PostMapping("/reports/byticketofficer")
-    public ModelAndView ticketofficerReport()
+    public ModelAndView ticketofficerReport(@RequestParam("user") String user, @RequestParam("start") Date start, @RequestParam("end") Date end)
     {
-        return null;
+        ModelAndView modelAndView=new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users users=userService.findByUsername(auth.getName());
+        modelAndView.addObject("fullname",users.getFirstName()+" "+users.getLastName());
+        modelAndView.setViewName("report/officertable");
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("start",start);
+        modelAndView.addObject("end",end);
+        modelAndView.addObject("list",reportService.byTicketOfficer(userService.findById(Integer.parseInt(user)),start,end));
+        System.out.println(reportService.byTicketOfficer(userService.findById(Integer.parseInt(user)),start,end).size());
+        return modelAndView;
     }
     @PostMapping("/reports/byroute")
-    public ModelAndView routeReport(){
-        return null;
+    public ModelAndView routeReport(@RequestParam("route") String route, @RequestParam("start") Date start, @RequestParam("end") Date end){
+        ModelAndView modelAndView=new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users users=userService.findByUsername(auth.getName());
+        modelAndView.addObject("fullname",users.getFirstName()+" "+users.getLastName());
+        modelAndView.setViewName("report/routetable");
+        modelAndView.addObject("route",route);
+        modelAndView.addObject("start",start);
+        modelAndView.addObject("end",end);
+        modelAndView.addObject("list",reportService.byRoute(routeService.findById(Integer.parseInt(route)),start,end));
+        System.out.println(reportService.byRoute(routeService.findById(Integer.parseInt(route)),start,end).size());
+        return modelAndView;
+    }
+    @PostMapping("/reports/bytraveldate")
+    public ModelAndView routeReport(@RequestParam("route") String route, @RequestParam("traveldate") Date traveldate){
+        ModelAndView modelAndView=new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users users=userService.findByUsername(auth.getName());
+        modelAndView.addObject("fullname",users.getFirstName()+" "+users.getLastName());
+        modelAndView.setViewName("report/passlist");
+        modelAndView.addObject("route",route);
+        modelAndView.addObject("start",traveldate);
 
+        modelAndView.addObject("list",reportService.byTravelDate(routeService.findById(Integer.parseInt(route)),traveldate));
+        System.out.println(reportService.byTravelDate(routeService.findById(Integer.parseInt(route)),traveldate).size());
+        return modelAndView;
     }
 
 
