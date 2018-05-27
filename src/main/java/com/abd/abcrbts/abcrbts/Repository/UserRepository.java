@@ -1,6 +1,7 @@
 package com.abd.abcrbts.abcrbts.Repository;
 
 
+import com.abd.abcrbts.abcrbts.Model.Role;
 import com.abd.abcrbts.abcrbts.Model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,6 +20,7 @@ public interface UserRepository extends JpaRepository<Users,Integer> {
     Users findById(int id);
     List<Users> findAll();
     Users findUsersByUsername(String username);
+    List<Users> findByRoles(Role role);
 
     void deleteById(Integer id);
 

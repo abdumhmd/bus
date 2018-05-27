@@ -21,23 +21,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
 
-        <title>Single Ticket| ABCRBTS</title>
+        <title>Sales By Agent | ABCRBTS</title>
         <link th:href="${'../assets/global/plugins/select2/css/select2.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css'}" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/select2/css/select2-bootstrap.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css'}" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.skinFlat.css'}" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
-        <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
-        <script>
-            function printDiv() {
-                var win=window.open("reciept", '_blank');
-                win.focus();
-
-            }
-        </script>
             <!-- END HEAD -->
     </head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
@@ -52,63 +42,16 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div layout:fragment="content" class="page-content">
-                    <div th:if="${error == 'success'}">
-                        <script>
-
-                            var initDemos = function () {
-                                $(document).ready(function (e) {
-                                   var printLink='<p><a class="btn btn-focus m-btn m-btn--pill m-btn--air" href="javascript:printDiv();">Print</a></p>';
-                                    swal({
-                                        title: "Ticket Sold",
-                                        text: "Ticket has been successfully Sold"+printLink,
-                                        icon: "success",
-                                        confirmButtonText: "Done",
-                                        confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
-                                        html:true,
-                                        type: 'success',})
-                                });
-                            }
-
-                            jQuery(document).ready(function () {
-                                initDemos();
-                            });
 
 
-
-                        </script>
-                    </div>
-                    <div th:if="${error == 'error'}">
-                        <script>
-
-                            var initDemos = function () {
-                                $(document).ready(function (e) {
-
-                                    swal({
-                                        title: "Oops...",
-                                        text: "There are no seats for selected route and date",
-                                        icon: "Error",
-                                        confirmButtonText: "Okay",
-                                        confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
-
-                                        type: 'error',})
-                                });
-                            }
-
-                            jQuery(document).ready(function () {
-                                initDemos();
-                            });
-
-
-                        </script>
-                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <!-- BEGIN SAMPLE FORM PORTLET-->
                             <div class="portlet light ">
                                 <div class="portlet-title">
                                     <div class="caption font-green-haze">
-                                        <i class="icon-book-open font-green-haze"></i>
-                                        <span class="caption-subject bold uppercase"> Single Ticket</span>
+                                        <i class="icon-user-following font-green-haze"></i>
+                                        <span class="caption-subject bold uppercase"> Sales By Agent</span>
                                     </div>
                                     <div class="actions">
                                         <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
@@ -123,47 +66,39 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
                                     </div>
                                 </div>
-                                <div class="portlet-body form">
-                                    <form role="form" method="POST"  th:object="${tickets}" action="/ticket/new">
-                                        <div class="form-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-md-line-input " data-date-format="dd/mm/yyyy">
-                                                        <input autocomplete="false" class="form-control form-control-inline date-picker"  data-date-start-date="+1d"  required="required" name="departureDate" size="16" type="text" value="" />
-                                                        <label >Travel Date</label>
-                                                        <span class="help-block">Please provide Travel Date</span>
-                                                    </div></div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <select id="single" required="required" name="route" class="form-control select2">
-                                                            <option value="">Select a Route</option>
-                                                            <option th:each="operator : ${route}" th:value="${operator.id}" th:inline="text">[[${operator.departure}]] - [[${operator.destination}]]</option>
-                                                        </select>
-                                                        <label></label>
-                                                        <span class="help-block">Which bus is assigned?</span>
-                                                    </div>
-                                                </div></div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="passengerName" class="form-control" />
-                                                        <label >Passenger Name</label>
-                                                        <span class="help-block">Please provide Passenger Name</span>
-                                                    </div></div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="passengerPhone" class="form-control" />
-                                                        <label >Passenger Phone</label>
-                                                        <span class="help-block">Please provide Passenger Phone</span>
-                                                    </div></div></div>
+                                <div class="portlet-body">
+                                    <div class="table-container">
+
+                                        <table class="table table-striped table-bordered table-hover table-checkable" id="agent_report">
+                                            <thead>
+                                            <tr role="row" class="heading">
 
 
-                                        </div>
-                                        <div class="form-actions noborder">
-                                            <button type="submit" class="btn blue">Submit</button>
-                                            <button type="reset" class="btn default">Cancel</button>
-                                        </div>
-                                    </form>
+                                                <th width="15%"> Departure</th>
+                                                <th width="15%"> Destination</th>
+                                                <th width="15%"> Departure Date</th>
+                                                <th width="15%"> Date Sold </th>
+                                                <th width="10%">Price</th>
+
+
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="f : *{list}">
+                                                <td th:text="${f.route.departure}"></td>
+                                                <td th:text="${f.route.destination}"></td>
+                                                <td th:text="${f.departureDate}"></td>
+                                                <td th:text="${f.timeSold}"></td>
+                                                <td th:text="${f.route.price}"></td>
+
+
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

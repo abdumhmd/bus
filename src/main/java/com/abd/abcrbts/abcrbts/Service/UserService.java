@@ -2,6 +2,7 @@ package com.abd.abcrbts.abcrbts.Service;
 
 
 
+import com.abd.abcrbts.abcrbts.Model.Role;
 import com.abd.abcrbts.abcrbts.Model.Users;
 
 import java.util.List;
@@ -15,5 +16,6 @@ public interface UserService {
     public void addRole(int users,int role);
     public String changePassword(String newPassword, String oldPassword);
     public void delete(int id);
+    public List<Users> findByRoles(Role role);
 
 }

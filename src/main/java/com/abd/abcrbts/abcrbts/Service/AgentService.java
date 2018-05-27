@@ -9,4 +9,5 @@ public List<Agents> findAll();
 public Agents findByPhoneAndPin(String phone,String pin);
 public Agents save(Agents agents);
 public void delete(Integer id);
+    public Agents findById(Integer id);
 }

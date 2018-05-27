@@ -4,6 +4,7 @@ import com.abd.abcrbts.abcrbts.Model.Agents;
 import com.abd.abcrbts.abcrbts.Model.Reservation;
 import com.abd.abcrbts.abcrbts.Model.Route;
 import com.abd.abcrbts.abcrbts.Model.Tickets;
+import com.abd.abcrbts.abcrbts.MyOzSmsClient;
 import com.abd.abcrbts.abcrbts.PropertyReader;
 import com.abd.abcrbts.abcrbts.Service.AgentService;
 import com.abd.abcrbts.abcrbts.Service.ReservationService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -75,13 +77,14 @@ public class UssdService {
             processRequest(moUssdReq);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (SdpException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     // Process all kinds of requests to customer
-    private void processRequest(MoUssdReq moUssdReq) throws IOException, SdpException {
+    private void processRequest(MoUssdReq moUssdReq) throws IOException, InterruptedException {
+
         MtUssdReq mtUssdReq;
         String destinationAddress = moUssdReq.getSourceAddress();
         if("mo-init".equals(moUssdReq.getUssdOperation()) && "*724#".equals(moUssdReq.getMessage()))
@@ -132,7 +135,7 @@ public class UssdService {
             mtUssdReq = generateMTRequest("Please choose a travel date\n"+msg, moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
             sessions="date";
         }
-        else if("mo-cont".equals(moUssdReq.getUssdOperation()) && "date".equals(sessions))
+        else if("mo-cont".equals(moUssdReq.getUssdOperation()) && "date".equals(sessions) && Integer.parseInt(moUssdReq.getMessage())<5)
         {
 
 
@@ -164,6 +167,12 @@ public class UssdService {
                 reservationService.save(reservation);
 
                 mtUssdReq = generateMTRequest("Reservation has been made.\nYour code is "+reservation.getRefNumber(), moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
+             MyOzSmsClient myOzSmsClient=new MyOzSmsClient("localhost",9500);
+                myOzSmsClient.login("admin","abc123");
+                if(myOzSmsClient.isLoggedIn())
+                {
+                    myOzSmsClient.sendMessage("+251"+reservation.getPassengerphone().substring(2),"Reference Number is "+reservation.getRefNumber());
+                }
                 sessions="date";
             }
             else {
@@ -203,6 +212,13 @@ public class UssdService {
                 tickets.setDepartureDate(reservation.getDepartureDate());
                 ticketService.save(tickets);
                 mtUssdReq = generateMTRequest("Reservation Has Been Confirmed", moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
+                MyOzSmsClient myOzSmsClient=new MyOzSmsClient("localhost",9500);
+                myOzSmsClient.login("admin","abc123");
+                if(myOzSmsClient.isLoggedIn())
+                {
+                    System.out.println("+251"+reservation.getPassengerphone().substring(4));
+                    myOzSmsClient.sendMessage("+251"+reservation.getPassengerphone().substring(2),reservation.getRoute().getDeparture()+" - "+reservation.getRoute().getDestination()+"\nTravel date:"+reservation.getDepartureDate()+"\nSeat Number: "+ticketService.countByRouteAndDate(reservation.getRoute(),reservation.getDepartureDate())+1);
+                }
             }
             else
             {
@@ -266,7 +282,12 @@ public class UssdService {
 */
 
         UssdRequestSender ussdRequestSender = new UssdRequestSender(new URL(REQUEST_SEND_URL));
-        ussdRequestSender.sendUssdRequest(mtUssdReq);
+        try {
+            ussdRequestSender.sendUssdRequest(mtUssdReq);
+        } catch (SdpException e) {
+            e.printStackTrace();
+            mtUssdReq=generateMTRequest("Oops... You've done something wrong", moUssdReq.getSessionId(), OPERATION_MT_FIN, destinationAddress);
+        }
         System.out.println(menuStates);
     }
 

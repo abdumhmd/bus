@@ -41,4 +41,9 @@ public class AgentServiceImpl implements AgentService {
     public void delete(Integer id) {
         agentRepository.delete(id);
     }
+
+    @Override
+    public Agents findById(Integer id) {
+        return agentRepository.findById(id);
+    }
 }

@@ -1,6 +1,7 @@
 package com.abd.abcrbts.abcrbts.Service;
 
 import com.abd.abcrbts.abcrbts.Model.CustomUserDetails;
+import com.abd.abcrbts.abcrbts.Model.Role;
 import com.abd.abcrbts.abcrbts.Model.Users;
 import com.abd.abcrbts.abcrbts.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +93,11 @@ public class UserServiceImpl implements UserDetailsService,UserService {
     @Override
     public void delete(int id) {
         userRepository.delete(id);
+    }
+
+    @Override
+    public List<Users> findByRoles(Role role) {
+        return userRepository.findByRoles(role);
     }
 
 
