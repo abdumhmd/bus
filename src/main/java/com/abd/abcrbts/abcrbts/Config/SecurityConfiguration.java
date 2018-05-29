@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/").authenticated()
-
+                .antMatchers("/changepass").authenticated()
                 .antMatchers("/notification/**/**").hasAuthority("ADMIN")
                 .antMatchers("/ticket/**/**").hasAuthority("TICKET_OFFICER")
                 .antMatchers("/routes/**/**").hasAuthority("ADMIN")
@@ -47,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/agents/**/**").hasAuthority("ADMIN")
                 .antMatchers("/notifications/**/**").hasAuthority("ADMIN")
                 .antMatchers("/reports/**/**").hasAuthority("ADMIN")
+
                 .antMatchers("/login").anonymous()
                 .and()
                 .formLogin().loginPage("/login").successForwardUrl("/home")

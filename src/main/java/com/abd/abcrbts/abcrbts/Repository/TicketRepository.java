@@ -23,4 +23,5 @@ public interface TicketRepository extends JpaRepository<Tickets,Long>{
     @Query(value = "\n" +
             "select (select count(*) from tickets where month(departure_date)=1),(select count(*) from tickets where month(departure_date)=2),(select count(*) from tickets where month(departure_date)=3),(select count(*) from tickets where month(departure_date)=4),(select count(*) from tickets where month(departure_date)=5),(select count(*) from tickets where month(departure_date)=6),(select count(*) from tickets where month(departure_date)=7),(select count(*) from tickets where month(departure_date)=8),(select count(*) from tickets where month(departure_date)=9),(select count(*) from tickets where month(departure_date)=10),(select count(*) from tickets where month(departure_date)=11),(select count(*) from tickets where month(departure_date)=12)",nativeQuery = true)
     public List<Object> monthly();
+
 }

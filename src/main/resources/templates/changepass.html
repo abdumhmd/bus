@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
+Version: 4.7.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">>
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+
+        <title>Change Password | ABCRBTS</title>
+        <link th:href="${'../assets/global/plugins/select2/css/select2.min.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/global/plugins/select2/css/select2-bootstrap.min.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css'}" rel="stylesheet" type="text/css" />
+        <link th:href="${'../assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.skinFlat.css'}" rel="stylesheet" type="text/css" />
+            <!-- END HEAD -->
+
+        <!--<script>
+            setInterval(function () {
+                window.location.reload(false);
+            },5000);
+        </script>-->
+
+
+    </head>
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
+        <!-- BEGIN HEADER -->
+
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+
+        <div class="page-container">
+
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div layout:fragment="content" class="page-content">
+
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="portlet light portlet-fit ">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-lock font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">Change Password</span>
+                                    </div>
+
+                                </div>
+                                <div class="portlet-body form">
+                                    <form role="form" method="POST"  th:action="@{/changepass}">
+                                        <div class="form-body">
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input form-md-floating-label">
+                                                        <input type="password" required="required" name="oldpass" class="form-control" />
+                                                        <label >Old Password</label>
+                                                        <span class="help-block">Please provide Old Password</span>
+                                                    </div></div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-md-line-input form-md-floating-label">
+                                                        <input type="password" required="required" name="newpass" id="new1" class="form-control" />
+                                                        <label >New Password</label>
+                                                        <span class="help-block">Please provide New Password</span>
+                                                    </div></div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input type="password" required="required" name="new2" id="new2" class="form-control" />
+                                                    <label >One more time</label>
+                                                    <span class="help-block">Please Repeat New Password</span>
+                                                </div></div>
+
+
+
+
+
+                                        </div>
+                                        <div class="form-actions noborder">
+                                            <button type="submit" class="btn blue">Submit</button>
+                                            <button type="reset" class="btn default">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END CONTENT BODY -->
+                <script th:src="${'../assets/global/plugins/select2/js/select2.full.min.js'}" type="text/javascript"></script>
+                <script th:src="${'../assets/pages/scripts/components-select2.min.js'}" type="text/javascript"></script>
+            </div>
+            <!-- END CONTENT -->
+
+        </div>
+
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2016 &copy; Metronic Theme By
+                <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
+                <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
+            </div></div>
+            <!-- END FOOTER -->
+
+            <!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../assets/global/plugins/ie8.fix.min.js"></script> 
+<![endif]-->
+            <!-- BEGIN CORE PLUGINS -->
+            <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+            <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
+            <!-- BEGIN THEME GLOBAL SCRIPTS -->
+            <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+            <!-- END THEME GLOBAL SCRIPTS -->
+            <!-- BEGIN THEME LAYOUT SCRIPTS -->
+            <script src="../assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
+            <script src="../assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
+            <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+            <script src="../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+            <!-- END THEME LAYOUT SCRIPTS -->
+            <script>
+                $(document).ready(function()
+                {
+                    $('#clickmewow').click(function()
+                    {
+                        $('#radio1003').attr('checked', 'checked');
+                    });
+                })
+            </script>
+    </body>
+
+</html>

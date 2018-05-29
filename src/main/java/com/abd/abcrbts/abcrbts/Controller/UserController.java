@@ -82,4 +82,26 @@ public ModelAndView list()
         userService.delete(id);
         return "redirect:/user";
     }
+    @GetMapping("/changepass")
+    public ModelAndView changepass() {
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("/changepass");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users user=userService.findByUsername(auth.getName());
+        modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
+
+        return modelAndView;
+    }
+    @PostMapping("/changepass")
+    public String ChangePassword(RedirectAttributes model, @RequestParam("oldpass") String oldPassword, @RequestParam("newpass") String newPassword, @RequestParam("new2") String confirmPassword){
+    String message=userService.changePassword(newPassword,oldPassword);
+        if (message.equals("success")) {
+            model.addFlashAttribute("error","success");
+            return "redirect:/dashboard";
+
+        } else {
+            model.addFlashAttribute("error","error");
+            return "redirect:/user/changePass";
+        }
+    }
 }

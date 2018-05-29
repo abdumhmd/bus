@@ -118,12 +118,12 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <form role="form" method="POST"  th:object="${tickets}" action="/ticket/new">
+                            <form role="form" method="POST"  action="/notifications">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group form-md-line-input form-md-floating-label" data-date-format="dd/mm/yyyy">
-                                                <input class="form-control form-control-inline date-picker"  data-date-start-date="+1d"  required="required" name="departureDate" size="16" type="text" value="" />
+                                                <input name="date" class="form-control form-control-inline date-picker"  data-date-start-date="+1d"  required="required"  size="16" type="text" value="" />
                                                 <label >Travel Date</label>
                                                 <span class="help-block">Please provide Travel Date</span>
                                             </div></div>
@@ -141,7 +141,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="col-md-2"></div>
                                         <div class="col-md-8">
                                         <div class="form-group form-md-line-input form-md-floating-label">
-                                            <textarea class="form-control" rows="4" id="maxlength_textarea" maxlength="160"></textarea>
+                                            <textarea class="form-control" rows="4" name="message" id="maxlength_textarea" maxlength="160"></textarea>
                                             <label>Textarea input</label>
                                         </div>
                                         </div>
