@@ -71,20 +71,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="row">
                                                 <div class="col-md-6">
                                                 <div class="form-group form-md-line-input form-md-floating-label">
-                                                    <input type="text" required="required" name="firstName" class="form-control" />
+                                                    <input type="text" pattern="[A-Za-z]{2,}" autocomplete="off" required="required" name="firstName" class="form-control" />
                                                     <label >First Name</label>
                                                     <span class="help-block">Please provide First Name</span>
                                                 </div></div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="lastName" class="form-control" />
+                                                        <input type="text" pattern="[A-Za-z]{2,}" autocomplete="off" required="required" name="lastName" class="form-control" />
                                                         <label >Last Name</label>
                                                         <span class="help-block">Please provide Last Name</span>
                                                     </div></div></div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group form-md-line-input form-md-floating-label">
-                                                            <input type="text" required="required" name="phoneNumber" class="form-control" />
+                                                            <input autocomplete="off" type="tel" pattern="[\+][2][5][1][9]\d{8}" title='Phone Number (Format: +25191234567)' required="required" name="phoneNumber" class="form-control" />
                                                             <label >Phone Number</label>
                                                             <span class="help-block">Please provide phone number</span>
                                                         </div></div>
@@ -94,6 +94,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <option></option>
                                                                 <option></option>
                                                                 <option>Nifas Silk Lafto</option>
+                                                                <option>Lideta</option>
                                                                 <option>Arada</option>
                                                                 <option>Yeka</option>
                                                                 <option>Bole</option>

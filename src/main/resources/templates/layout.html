@@ -15,7 +15,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
 
@@ -195,8 +196,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             </ul>
                         </li>
-                        <li class="nav-item  " th:classappend="${ title == 'users'  ? 'open' : ''}">
-                            <a href="?p=" class="nav-link nav-toggle">
+                        <li  class="nav-item  " th:classappend="${ title == 'users'  ? 'open' : ''}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-users"></i>
                                 <span class="title">Users</span>
                                 <span class="arrow"></span>
@@ -323,6 +324,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
             <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
         <script th:src="${'../assets/global/plugins/select2/js/select2.full.min.js'}" type="text/javascript"></script>
         <script th:src="${'../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js'}" type="text/javascript"></script>
         <script src="../assets/global/scripts/datatable.js" type="text/javascript"></script>

@@ -66,6 +66,9 @@ public String saveBus(@Valid Route route,@Valid Bus bus, BindingResult bindingRe
 }
     @GetMapping("routes/delete/{id}")
     public String delete(@PathVariable int id) {
+        Bus bus=busService.findById(routeService.findById(id).getBus().getId());
+        bus.setAssigned(false);
+        busService.save(bus);
         routeService.deleteById(id);
         return "redirect:/routes";
     }

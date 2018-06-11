@@ -15,4 +15,5 @@ public interface TicketService {
     public Tickets findById(Long id);
     public Integer countAll();
     public List<Object> monthly();
+    public Integer getTheFrequent();
 }

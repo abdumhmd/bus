@@ -1,8 +1,10 @@
 package com.abd.abcrbts.abcrbts.Controller;
 
 import com.abd.abcrbts.abcrbts.Model.Role;
+import com.abd.abcrbts.abcrbts.Model.Route;
 import com.abd.abcrbts.abcrbts.Model.Users;
 import com.abd.abcrbts.abcrbts.Service.AgentService;
+import com.abd.abcrbts.abcrbts.Service.RouteService;
 import com.abd.abcrbts.abcrbts.Service.TicketService;
 import com.abd.abcrbts.abcrbts.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class HomeController {
 
     @Autowired
     private AgentService agentService;
+
+    @Autowired
+    private RouteService routeService;
 
     @RequestMapping("/home")
     public String home() {
@@ -56,6 +61,8 @@ public class HomeController {
         Users user=userService.findByUsername(auth.getName());
         modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
         modelAndView.addObject("ticket",ticketService.countAll());
+        Route route=routeService.findById(ticketService.getTheFrequent());
+        modelAndView.addObject("frequent",route.getDeparture().toString()+" to "+route.getDestination().toString());
         modelAndView.addObject("user",userService.findUsers().size());
         modelAndView.addObject("agent",agentService.findAll().size());
         modelAndView.addObject("title","Dashboard");

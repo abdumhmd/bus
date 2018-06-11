@@ -135,7 +135,7 @@ public class UssdService {
             mtUssdReq = generateMTRequest("Please choose a travel date\n"+msg, moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
             sessions="date";
         }
-        else if("mo-cont".equals(moUssdReq.getUssdOperation()) && "date".equals(sessions) && Integer.parseInt(moUssdReq.getMessage())<5)
+        else if("mo-cont".equals(moUssdReq.getUssdOperation()) && "date".equals(sessions) && Integer.parseInt(moUssdReq.getMessage())<=5)
         {
 
 
@@ -229,58 +229,6 @@ public class UssdService {
         {
             mtUssdReq = generateMTRequest("Sorry! Invalid Input", moUssdReq.getSessionId(), OPERATION_MT_FIN, destinationAddress);
         }
-       /* if (menuStates.size() > 0) {
-            switch (moUssdReq.getMessage()) {
-                case SERVICE_INIT_CODE:
-                    mtUssdReq = generateMTRequest("This is Habesha Bus Ticketing System\n1. Reserve a seat\n2. Confirm Reservations", moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
-
-                    menuStates.add("welcome.page");
-                    sessions="welcome";
-                    break;
-                case SERVICE_EXIT_CODE:
-                    mtUssdReq = generateMTRequest(propertyReader.readProperty("exit.page"), moUssdReq.getSessionId(), OPERATION_MT_FIN, destinationAddress);
-                    menuStates.clear();
-                    break;
-                case SERVICE_ELECTRONICS_CODE:
-                    departure=routeService.findAll();
-                    String msg="Select a Departure City\n";
-                    for(int i=0;i<departure.size();i++)
-                    {
-                        msg=msg+Math.addExact(i,1)+":"+departure.get(i).getDeparture();
-                    }
-                    mtUssdReq = generateMTRequest(msg, moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
-                    menuStates.add("departure.page");
-                    sessions="departure";
-                    if(menuStates.get(menuStates.size()-3)=="welcome.page") {
-                        destination = routeService.findAll();
-                        msg = "Select a Destination City\n";
-                        for (int i = 0; i < departure.size(); i++) {
-                            msg = msg + Math.addExact(i, 1) + ":" + departure.get(i).getDestination();
-                        }
-                        mtUssdReq = generateMTRequest(msg, moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress); }
-
-                    break;
-                case SERVICE_COSMETICS_CODE:
-                    mtUssdReq = generateMTRequest(propertyReader.readProperty("cosmetics.page"), moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
-                    menuStates.add("cosmetics.page");
-                    break;
-                case SERVICE_HOUSEHOLDS_CODE:
-                    mtUssdReq = generateMTRequest(propertyReader.readProperty("households.page"), moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
-                    menuStates.add("households.page");
-                    break;
-                case SERVICE_PREV_CODE:
-                    mtUssdReq = generateMTRequest(backOperation(), moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
-                    break;
-                default:
-                    mtUssdReq = generateMTRequest(propertyReader.readProperty("error.page"), moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
-                    menuStates.add("error.page");
-            }
-        } else {
-            mtUssdReq = generateMTRequest(propertyReader.readProperty("error.page"), moUssdReq.getSessionId(), OPERATION_MT_CONT, destinationAddress);
-            menuStates.add("error.page");
-        }
-*/
-
         UssdRequestSender ussdRequestSender = new UssdRequestSender(new URL(REQUEST_SEND_URL));
         try {
             ussdRequestSender.sendUssdRequest(mtUssdReq);
@@ -290,7 +238,6 @@ public class UssdService {
         }
         System.out.println(menuStates);
     }
-
     // Generate request to the customer
     private MtUssdReq generateMTRequest(String message, String sessionId, String operation, String destinationAddress) {
         MtUssdReq mtUssdReq = new MtUssdReq();
@@ -302,7 +249,5 @@ public class UssdService {
         mtUssdReq.setDestinationAddress(destinationAddress);
         return mtUssdReq;
     }
-
     // Functionality of the back command
-
 }

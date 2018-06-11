@@ -52,8 +52,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <h1 class="page-title"> ABCRBTS Dashboard
                         <small>recent statistics, charts and sales</small>
                     </h1>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
-                        <div class="dashboard-stat blue">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom-10">
+                        <div class="dashboard-stat white">
                             <div class="visual">
                                 <i class="fa fa-briefcase fa-icon-medium"></i>
                             </div>
@@ -64,8 +64,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="dashboard-stat red">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="dashboard-stat white">
                             <div class="visual">
                                 <i class="icon-user-following"></i>
                             </div>
@@ -76,8 +76,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="dashboard-stat green">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="dashboard-stat white">
                             <div class="visual">
                                 <i class="fa fa-group fa-icon-medium"></i>
                             </div>
@@ -86,6 +86,34 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="desc"> Registered Users</div>
                             </div>
 
+                        </div>
+                    </div>
+                    <!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="dashboard-stat green">
+                            <div class="visual">
+                                <i class="fa fa-group fa-icon-medium"></i>
+                            </div>
+                            <div class="details">
+                                <div class="desc" th:inline="text">[[${frequent}]]</div>
+                                <div class="desc"> Top Selling Route</div>
+                            </div>
+
+                        </div>
+                    </div>-->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="dashboard-stat white">
+                            <div class="visual">
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                            </div>
+                            <div class="display">
+                                <div class="text">
+                                    <h4 class="font-red-haze">
+                                        <span th:inline="text">[[${frequent}]]</span>
+                                    </h4>
+                                    <small>Top Selling This Month</small>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="row">

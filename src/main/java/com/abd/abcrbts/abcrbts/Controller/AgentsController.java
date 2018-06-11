@@ -51,6 +51,7 @@ public class AgentsController {
     @RequestMapping(value = "/agents/new",method = RequestMethod.POST)
     public String saveAgent(@Valid Agents agent, BindingResult bindingResult, RedirectAttributes model)
     {
+        agent.setPhoneNumber("00"+agent.getPhoneNumber().substring(4));
         agentService.save(agent);
         model.addFlashAttribute("error","success");
         model.addFlashAttribute("pin",agent.getPin());

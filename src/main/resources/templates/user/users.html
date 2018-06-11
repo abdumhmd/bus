@@ -71,26 +71,27 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="row">
                                                 <div class="col-md-6">
                                                 <div class="form-group form-md-line-input form-md-floating-label">
-                                                    <input type="text" required="required" name="firstName" class="form-control" />
+                                                    <input type="text" pattern="[A-Za-z]{2,}" autocomplete="off" required="required" name="firstName" class="form-control" />
                                                     <label >First Name</label>
                                                     <span class="help-block">Please provide First Name</span>
                                                 </div></div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="lastName" class="form-control" />
+                                                        <input type="text" pattern="[A-Za-z]{2,}" autocomplete="off" required="required" name="lastName" class="form-control" />
                                                         <label >Last Name</label>
                                                         <span class="help-block">Please provide Last Name</span>
                                                     </div></div></div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group form-md-line-input form-md-floating-label">
-                                                            <input type="text" required="required" name="phone" class="form-control" />
+                                                            <input type="tel" pattern="[\+][2][5][1][9]\d{8}" autocomplete="off" title='Phone Number (Format: +25191234567)' name="phone" class="form-control" />
                                                             <label >Phone Number</label>
                                                             <span class="help-block">Please provide phone number</span>
                                                         </div></div>
                                                     <div class="col-md-6">
                                                         <div class="form-group form-md-line-input form-md-floating-label">
                                                             <select id="single" required="required" name="role" class="form-control select2">
+                                                                <option></option>
                                                                 <option th:each="operator : ${roles}" th:value="${operator.role_id}" th:inline="text">[[${operator.role}]]</option>
                                                             </select>
                                                             <label></label>

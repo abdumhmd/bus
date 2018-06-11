@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
 
-        <title>Buses | ABCRBTS</title>
+        <title>Agents | ABCRBTS</title>
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
@@ -46,15 +46,16 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div layout:fragment="content" class="page-content">
                     <div th:if="${error == 'success'}">
                         <script>
-
+                            var pass='<p th:inline="text" id="uname">PIN Code: [[${pin}]]</p>';
                             var initDemos = function () {
                                 $(document).ready(function (e) {
                                     swal({
                                         title: "Agent Registered !!",
-                                        text: "Agent has been Successfully Registered",
+                                        text: pass,
                                         icon: "success",
                                         confirmButtonText: "Got it!!",
                                         confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
+                                        html: '<p th:inline="text" class="alert alert-info" id="uname">PIN Code: [[${pin}]]</p>',
                                         type: 'success',
 
                                     });

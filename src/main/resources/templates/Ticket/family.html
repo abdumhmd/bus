@@ -24,6 +24,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <title>Family Ticket| ABCRBTS</title>
         <link th:href="${'../assets/global/plugins/select2/css/select2.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css'}" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/select2/css/select2-bootstrap.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css'}" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
@@ -38,6 +39,40 @@ License: You must have a valid license purchased only from themeforest(the above
 
             }
         </script>
+        <script>
+        function myFunction(value){
+
+        $date=document.getElementById("date").value;
+        var $url="/ticket/available";
+        $.ajax({
+        type: "POST",
+        url: $url,
+        data: {route:value,departure:$date},
+        cache: false,
+        success: function(data){
+        $msg="You have "+data+" available Seats";
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-center",
+                "onclick": null,
+                "showDuration": "1000",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.info($msg);
+
+        },
+
+        });
+
+        }</script>
             <!-- END HEAD -->
     </head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
@@ -129,13 +164,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group form-md-line-input " data-date-format="dd/mm/yyyy">
-                                                        <input autocomplete="false" class="form-control form-control-inline date-picker"  data-date-start-date="+1d"  required="required" name="departureDate" size="16" type="text" value="" />
+                                                        <input autocomplete="off" id="date" class="form-control form-control-inline date-picker"  data-date-start-date="+1d"  required="required" name="departureDate" size="16" type="text" value="" />
                                                         <label >Travel Date</label>
                                                         <span class="help-block">Please provide Travel Date</span>
                                                     </div></div>
                                                 <div class="col-md-4">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <select id="single" required="required" name="route" class="form-control select2">
+                                                        <select id="single" required="required" onchange="myFunction(this.value)" name="route" class="form-control select2">
                                                             <option value="">Select a Route</option>
                                                             <option th:each="operator : ${route}" th:value="${operator.id}" th:inline="text">[[${operator.departure}]] - [[${operator.destination}]]</option>
                                                         </select>
@@ -153,14 +188,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="passengerName" class="form-control" />
+                                                        <input type="text" autocomplete="off" required="required" name="passengerName" class="form-control" />
                                                         <label >Family Representative</label>
                                                         <span class="help-block">Please provide Representative Name</span>
                                                     </div></div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="passengerPhone" class="form-control" />
-                                                        <label >Passenger Phone</label>
+                                                        <input type="tel" autocomplete="off" pattern="[\+][2][5][1][9]\d{8}" title='Phone Number (Format: +25191234567)' required="required" name="passengerPhone" class="form-control" />
+                                                        <label >Representative Phone</label>
                                                         <span class="help-block">Please provide Representative Phone</span>
                                                     </div></div></div>
 

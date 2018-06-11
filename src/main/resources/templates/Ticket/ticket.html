@@ -1,28 +1,14 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
-Version: 4.7.5
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">>
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
-
     <head>
-
         <title>Single Ticket| ABCRBTS</title>
         <link th:href="${'../assets/global/plugins/select2/css/select2.min.css'}" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/select2/css/select2-bootstrap.min.css'}" rel="stylesheet" type="text/css" />
         <link th:href="${'../assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css'}" rel="stylesheet" type="text/css" />
@@ -35,26 +21,49 @@ License: You must have a valid license purchased only from themeforest(the above
             function printDiv() {
                 var win=window.open("reciept", '_blank');
                 win.focus();
-
+            }
+            function myFunction(value){
+                $date=document.getElementById("date").value;
+                var $url="/ticket/available";
+                $.ajax({
+                    type: "POST",
+                    url: $url,
+                    data: {route:value,departure:$date},
+                    cache: false,
+                    success: function(data){
+                        $msg="You have "+data+" available Seats";
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "positionClass": "toast-top-center",
+                            "onclick": null,
+                            "showDuration": "1000",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        };
+                        toastr.info($msg);
+                    },
+                });
             }
         </script>
             <!-- END HEAD -->
     </head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
         <!-- BEGIN HEADER -->
-
         <!-- END HEADER -->
         <!-- BEGIN HEADER & CONTENT DIVIDER -->
-
         <div class="page-container">
-
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div layout:fragment="content" class="page-content">
                     <div th:if="${error == 'success'}">
                         <script>
-
                             var initDemos = function () {
                                 $(document).ready(function (e) {
                                    var printLink='<p><a class="btn btn-focus m-btn m-btn--pill m-btn--air" href="javascript:printDiv();">Print</a></p>';
@@ -68,37 +77,27 @@ License: You must have a valid license purchased only from themeforest(the above
                                         type: 'success',})
                                 });
                             }
-
                             jQuery(document).ready(function () {
                                 initDemos();
                             });
-
-
-
                         </script>
                     </div>
                     <div th:if="${error == 'error'}">
                         <script>
-
                             var initDemos = function () {
                                 $(document).ready(function (e) {
-
                                     swal({
                                         title: "Oops...",
                                         text: "There are no seats for selected route and date",
                                         icon: "Error",
                                         confirmButtonText: "Okay",
                                         confirmButtonClass: "btn btn-focus m-btn m-btn--pill m-btn--air",
-
                                         type: 'error',})
                                 });
                             }
-
                             jQuery(document).ready(function () {
                                 initDemos();
                             });
-
-
                         </script>
                     </div>
                     <div class="row">
@@ -111,15 +110,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="caption-subject bold uppercase"> Single Ticket</span>
                                     </div>
                                     <div class="actions">
-                                        <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
-                                            <i class="icon-cloud-upload"></i>
-                                        </a>
-                                        <a class="btn btn-circle btn-icon-only green" href="javascript:;">
-                                            <i class="icon-wrench"></i>
-                                        </a>
-                                        <a class="btn btn-circle btn-icon-only red" href="javascript:;">
-                                            <i class="icon-trash"></i>
-                                        </a>
                                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
                                     </div>
                                 </div>
@@ -129,35 +119,32 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input " data-date-format="dd/mm/yyyy">
-                                                        <input autocomplete="false" class="form-control form-control-inline date-picker"  data-date-start-date="+1d"  required="required" name="departureDate" size="16" type="text" value="" />
+                                                        <input autocomplete="false" class="form-control form-control-inline date-picker"  data-date-start-date="+1d"  required="required" name="departureDate" size="16" type="text" value="" id="date"/>
                                                         <label >Travel Date</label>
                                                         <span class="help-block">Please provide Travel Date</span>
                                                     </div></div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <select id="single" required="required" name="route" class="form-control select2">
+                                                        <select id="single" required="required" onchange="myFunction(this.value)" name="route" class="form-control select2">
                                                             <option value="">Select a Route</option>
                                                             <option th:each="operator : ${route}" th:value="${operator.id}" th:inline="text">[[${operator.departure}]] - [[${operator.destination}]]</option>
                                                         </select>
                                                         <label></label>
-                                                        <span class="help-block">Which bus is assigned?</span>
                                                     </div>
                                                 </div></div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="passengerName" class="form-control" />
+                                                        <input type="text" autocomplete="off" required="required" name="passengerName" class="form-control" />
                                                         <label >Passenger Name</label>
                                                         <span class="help-block">Please provide Passenger Name</span>
                                                     </div></div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-md-line-input form-md-floating-label">
-                                                        <input type="text" required="required" name="passengerPhone" class="form-control" />
+                                                        <input type="tel" autocomplete="off" pattern="[\+][2][5][1][9]\d{8}" title='Phone Number (Format: +25191234567)' required="required" name="passengerPhone" class="form-control" />
                                                         <label >Passenger Phone</label>
                                                         <span class="help-block">Please provide Passenger Phone</span>
                                                     </div></div></div>
-
-
                                         </div>
                                         <div class="form-actions noborder">
                                             <button type="submit" class="btn blue">Submit</button>
@@ -169,16 +156,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <!-- END SAMPLE FORM PORTLET-->
                     </div>
-
                 </div>
                 <!-- END CONTENT BODY -->
                 <script th:src="${'../assets/global/plugins/select2/js/select2.full.min.js'}" type="text/javascript"></script>
                 <script th:src="${'../assets/pages/scripts/components-select2.min.js'}" type="text/javascript"></script>
             </div>
             <!-- END CONTENT -->
-
         </div>
-
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
@@ -190,7 +174,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div></div>
             <!-- END FOOTER -->
-
             <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>
 <script src="../assets/global/plugins/excanvas.min.js"></script> 
@@ -213,15 +196,5 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
             <script src="../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
             <!-- END THEME LAYOUT SCRIPTS -->
-            <script>
-                $(document).ready(function()
-                {
-                    $('#clickmewow').click(function()
-                    {
-                        $('#radio1003').attr('checked', 'checked');
-                    });
-                })
-            </script>
     </body>
-
 </html>

@@ -14,8 +14,6 @@ import java.util.List;
 
 @Service
 public class TicketServiceImpl implements TicketService{
-
-
     @Autowired
     private TicketRepository ticketRepository;
 
@@ -52,6 +50,11 @@ public class TicketServiceImpl implements TicketService{
     @Override
     public List<Object> monthly() {
         return ticketRepository.monthly();
+    }
+
+    @Override
+    public Integer getTheFrequent() {
+        return ticketRepository.getTheFrequent();
     }
 
 

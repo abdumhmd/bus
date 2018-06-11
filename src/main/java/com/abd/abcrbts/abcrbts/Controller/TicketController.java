@@ -1,5 +1,6 @@
 package com.abd.abcrbts.abcrbts.Controller;
 
+import com.abd.abcrbts.abcrbts.Model.Route;
 import com.abd.abcrbts.abcrbts.Model.Tickets;
 import com.abd.abcrbts.abcrbts.Model.Users;
 import com.abd.abcrbts.abcrbts.Service.ReservationService;
@@ -27,6 +28,8 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 public class TicketController {
@@ -55,6 +58,7 @@ public class TicketController {
     ModelAndView modelAndView=new ModelAndView();
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     Users user=userService.findByUsername(auth.getName());
+
     modelAndView.addObject("route",routeService.findAll());
     modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
     modelAndView.addObject("title","Tickets");
@@ -124,7 +128,6 @@ public String sell(@Valid Tickets tickets, RedirectAttributes model){
         modelAndView.addObject("Lseat",ticketService.countByRouteAndDate(tickets1.getRoute(),tickets1.getDepartureDate()));
         modelAndView.addObject("soldBy",tickets1.getSoldBy().getFirstName()+" "+tickets1.getSoldBy().getLastName());
         modelAndView.addObject("plate",tickets1.getRoute().getBus().getPlate());
-
         modelAndView.addObject("amount",num);
         modelAndView.addObject("name",tickets1.getPassengerName());
         modelAndView.addObject("phone",tickets1.getPassengerPhone());
@@ -133,7 +136,6 @@ public String sell(@Valid Tickets tickets, RedirectAttributes model){
     @GetMapping("/ticket/family")
     public ModelAndView family()
     {
-
         ModelAndView modelAndView=new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Users user=userService.findByUsername(auth.getName());
@@ -143,7 +145,6 @@ public String sell(@Valid Tickets tickets, RedirectAttributes model){
         modelAndView.addObject("tickets",new Tickets());
         modelAndView.setViewName("/ticket/family");
         return modelAndView;
-
     }
     @PostMapping("/ticket/family")
     public String sellFamily(@Valid Tickets tickets, RedirectAttributes model, @RequestParam("amount") String amount)  {
@@ -160,12 +161,7 @@ public String sell(@Valid Tickets tickets, RedirectAttributes model){
             for(int i=0;i<Integer.parseInt(amount);i++)
             {
                 ticketService.save(new Tickets(tickets.getAgents(),tickets.getPassengerPhone(),tickets.getPassengerName(),tickets.getRoute(),tickets.getSoldBy(),tickets.getDepartureDate()));
-
             }
-
-
-
-
             model.addFlashAttribute("error","success");
             model.addFlashAttribute("departureDate",tickets.getDepartureDate());
             model.addFlashAttribute("time",tickets.getRoute().getTime());
@@ -176,12 +172,18 @@ public String sell(@Valid Tickets tickets, RedirectAttributes model){
             model.addFlashAttribute("soldBy",tickets.getSoldBy());
             model.addFlashAttribute("plate",tickets.getRoute().getBus().getPlate());
             tickets1=tickets;
-
             System.out.println(ticketService.countByRouteAndDate(tickets.getRoute(),tickets.getDepartureDate()));
         }
         else
         {
             model.addFlashAttribute("error","error");}
         return "redirect:/ticket/family";
+    }
+    @RequestMapping(value = "/ticket/available",method = RequestMethod.POST)
+    @ResponseBody
+    public Integer findAvailable(int route,Date departure)
+    {
+        System.out.println(departure);
+        return routeService.findById(route).getBus().getSeats()-ticketService.countByRouteAndDate(routeService.findById(route),departure);
     }
 }

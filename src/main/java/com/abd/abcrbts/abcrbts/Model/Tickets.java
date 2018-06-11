@@ -7,7 +7,8 @@ import java.util.Date;
  * @version 1.0
  * @created 30-Jan-2018 10:43:27 AM
  */
-@Entity@Table(name="tickets")
+@Entity
+@Table(name="tickets")
 public class Tickets {
 
 	@ManyToOne
@@ -33,13 +34,11 @@ public class Tickets {
 		this.passengerName = passengerName;
 		this.route = route;
 		this.soldBy = soldBy;
-
 		this.departureDate = departureDate;
 	}
 
 	public Tickets() {
 	}
-
 	public Date getDepartureDate() {
 		return departureDate;
 	}
